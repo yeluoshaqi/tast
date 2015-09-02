@@ -21,6 +21,7 @@ class Auth extends CI_Controller
             if($this->form_validation->run()){
                 $name = $this->input->post('name');
                 $password = $this->input->post('password');
+                // var_dump($name,$password);exit;
                 $result = $this->User_model->validate($name, $password);
                 if($result){
                     $data = array(

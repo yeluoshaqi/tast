@@ -15,10 +15,10 @@ class MY_Controller extends CI_Controller
             if(!$wx_id){
                 $wx_id = 1;
             }
-            // if($wx_id == 'orange'){
-            //     $this->session->set_userdata('wx', 1);
-            //     $this->session->set_userdata('member_id', 1);
-            // }
+            if($wx_id == '1'){
+                $this->session->set_userdata('wx', 1);
+                $this->session->set_userdata('member_id', 1);
+            }
             if(!$this->session->userdata('member_id') OR !$this->session->userdata('wx') OR ($wx_id != $this->session->userdata['wx'])){
                 $this->session->set_userdata('wx', $wx_id);
 

@@ -70,23 +70,23 @@ function more_delete(e)
 }
 
 function push_noty(){
-  $.post('http://www.ipeibama.com/index.php/admin/check_new', function(data) {
-    if(data == 1){
-      var n = noty({
-        layout: 'topRight',
-        theme: 'relax',
-        type: 'alert',
-        text: '您有新的订单！',
-        animation: {
-          open: 'animated bounceInRight', // Animate.css class names
-          close: 'animated bounceOutRight', // Animate.css class names
-          easing: 'swing', // easing
-          speed: 500 // opening & closing animation speed
-        },
-        timeout: 1000,
-        closeWith: ['click']
-      });
-    }
-    setTimeout(push_noty,5000);
-  });
+  // $.post('http://www.ipeibama.com/index.php/admin/check_new', function(data) {
+  //   if(data == 1){
+  //     var n = noty({
+  //       layout: 'topRight',
+  //       theme: 'relax',
+  //       type: 'alert',
+  //       text: '您有新的订单！',
+  //       animation: {
+  //         open: 'animated bounceInRight', // Animate.css class names
+  //         close: 'animated bounceOutRight', // Animate.css class names
+  //         easing: 'swing', // easing
+  //         speed: 500 // opening & closing animation speed
+  //       },
+  //       timeout: 1000,
+  //       closeWith: ['click']
+  //     });
+  //   }
+  //   setTimeout(push_noty,5000);
+  // });
 }

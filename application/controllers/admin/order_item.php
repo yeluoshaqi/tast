@@ -33,7 +33,9 @@ class Order_item extends MY_Controller
         $config['per_page'] = 10;
         $page = $this->uri->segment(3, 1);
         $offset = ($page-1) * $config['per_page'];
+
         $config['total_rows'] = $this->Order_item_model->get_count($search);
+        
         $this->pagination->initialize($config);
 
         $data['list'] = $this->Order_item_model->get_list($offset, $config['per_page'],$search);

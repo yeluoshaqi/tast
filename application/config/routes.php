@@ -137,6 +137,13 @@ $route['admin/city/update/(:any)'] = 'admin/city/update';
 $route['admin/city/upload/(:any)'] = 'admin/city/upload';
 $route['admin/city/delete/(:any)'] = 'admin/city/delete';
 $route['admin/city/(:any)'] = 'admin/city/index';
+/** coupon **/
+$route['admin/coupon'] = 'admin/coupon/index';
+$route['admin/coupon/create_icoupons'] = 'admin/coupon/create_icoupons';
+$route['admin/coupon/update_icoupons'] = 'admin/coupon/update_icoupons';
+$route['admin/coupon/update_icoupons/(:any)'] = 'admin/coupon/update_icoupons';
+$route['admin/coupon/create_coupon'] = 'admin/coupon/create_coupon';
+$route['admin/coupon/create_coupon/(:any)'] = 'admin/coupon/create_coupon';
 
 /** order **/
 $route['admin/order'] = 'admin/order/index';
