@@ -1,0 +1,46 @@
+<?php $this->load->view('mobile/public/header.html'); ?>
+
+<!-- top nav Begin-->
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a class="pbm_back" href="javascript:window.history.back(-1)"><img src="<?php echo base_url(); ?>foundation/images/pbm_back.png"></a></h1>
+    </li>
+  </ul>
+  <section class="middle tab-bar-section">
+    <h1 class="title_con">意见反馈</h1>
+  </section>
+</nav>
+<!-- top nav end-->
+
+<form method="POST" action="<?php echo mobile_url('mobile/message', $this->session->userdata['wx']); ?>">
+  <div class="row">
+    <div class="small-12 columns <?php if(form_error('type')) echo 'error'; ?>">
+      <div class="pbm_bdbtm">
+        <label>选择类型</label>
+      </div>
+        <select name="type" style="margin-top:10px">
+          <?php foreach($list as $key=>$value){ ?>
+          <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+          <?php } ?>
+        </select>
+      
+      <?php echo form_error('type'); ?>
+    </div>
+    <div class="small-12 columns <?php if(form_error('content')) echo 'error'; ?>">
+      <div class="pbm_bdbtm">
+        <label>建议：</label>
+      </div>
+
+        <textarea name="content" placeholder="请输入您的宝贵意见" style="margin-top:10px"><?php echo set_value('content'); ?></textarea>
+      
+      <?php echo form_error('content'); ?>
+    </div>
+    <div class="small-12 columns">
+    <div class="small-12 columns" style=" margin-top:20px">
+      <input type="submit" class="button small expand" value="提交建议">
+    </div>
+  </div>
+  </div>
+</form>
+<?php $this->load->view('mobile/public/footer.html'); ?>

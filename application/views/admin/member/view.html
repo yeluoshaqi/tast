@@ -1,0 +1,38 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<?php $this->load->view('admin/public/top.html'); ?>
+<div class="row">
+  <div class="medium-2 columns">
+    <?php $this->load->view('admin/public/side.html'); ?>
+  </div>
+  <div class="medium-10 columns">
+    <h1>用户信息</h1>
+    <?php echo $breadcrumbs; ?>
+    <table>
+      <tbody>
+        <tr>
+          <td>姓名</td>
+          <td><?php echo $info['name']; ?></td>
+        </tr>
+        <tr>
+          <td>电话</td>
+          <td><?php echo $info['mobile']; ?></td>
+        </tr>
+        <tr>
+          <td>地址</td>
+          <td><?php echo $info['address']; ?></td>
+        </tr>
+      </tbody>
+    </table>
+    <a class="button tiny alert" href="#" data-reveal-id="delete_check">删除</a>
+  </div>
+</div>
+
+<div id="delete_check" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">请注意!</h2>
+  <p class="lead">如果点击删除，此信息将无法找回！</p>
+  <a class="button tiny alert" href="<?php echo site_url().'/admin/member/delete/'.$info['id']; ?>">
+    删除
+  </a>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+<?php $this->load->view('admin/public/footer.html'); ?>

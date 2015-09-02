@@ -1,0 +1,67 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<?php $this->load->view('admin/public/top.html'); ?>
+<div class="row">
+  <div class="medium-2 columns">
+    <?php $this->load->view('admin/public/side.html'); ?>
+  </div>
+  <div class="medium-10 columns">
+    <h1>编辑套餐</h1>
+
+    <?php if(isset($result_code)){ ?>
+    <div data-alert class="alert-box <?php if(!$result_code) echo 'alert'; ?>">
+      <?php echo $result_msg; ?>
+      <a href="#" class="close">&times;</a>
+    </div>
+    <?php } ?>
+
+    <?php echo $breadcrumbs; ?>
+
+    <dl class="sub-nav">
+      <dd class="active"><a href="#">基本信息</a></dd>
+      <dd><a href="<?php echo site_url().'/admin/field?source_type=service&source_id='.$info['id']; ?>">套餐详情</a></dd>
+    </dl>
+
+    <form method="POST" action="<?php echo site_url(); ?>/admin/service/update">
+      <input type="hidden" name="id" value="<?php echo $info['id']; ?>">
+      <div class="row">
+        <div class="large-12 columns <?php if(form_error('name')) echo 'error'; ?>">
+          <label>套餐名称
+            <input type="text" name="name" value="<?php echo $info['name']; ?>">
+          </label>
+          <?php echo form_error('name'); ?>
+        </div>
+        <div class="large-12 columns columns <?php if(form_error('intro')) echo 'error'; ?>">
+          <label>套餐内容
+            <textarea name="intro"><?php echo $info['intro']; ?></textarea>
+          </label>
+          <?php echo form_error('intro'); ?>
+        </div>
+        <div class="large-12 columns columns columns <?php if(form_error('price')) echo 'error'; ?>">
+          <label>套餐价格
+            <input type="number" name="price" value="<?php echo $info['price']; ?>">
+          </label>
+          <?php echo form_error('price'); ?>
+        </div>
+        <div class="large-12 columns ">
+          <label>状态</label>
+          <input type="radio" name="status" value="2" id="status1" <?php if($info['status'] == 2) echo 'checked'; ?>><label for="status1">使用</label></input>
+          <input type="radio" name="status" value="1" id="status2" <?php if($info['status'] == 1) echo 'checked'; ?>><label for="status2">不使用</label></input>
+        </div>
+        <div class="large-12 columns">
+          <input class="button tiny" type="submit" value="更新">
+          <a class="button tiny alert" href="#" data-reveal-id="delete_check">删除</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="delete_check" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">请注意!</h2>
+  <p class="lead">如果您点击删除按钮，本套餐信息将无法找回！！</p>
+  <a class="button tiny alert" href="<?php echo site_url().'/admin/service/delete/'.$info['id']; ?>">
+    删除
+  </a>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+<?php $this->load->view('admin/public/footer.html'); ?>

@@ -1,0 +1,41 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<?php $this->load->view('admin/public/top.html'); ?>
+<div class="row">
+  <div class="medium-2 columns">
+    <?php $this->load->view('admin/public/side.html'); ?>
+  </div>
+  <div class="medium-10 columns">
+    <h1>Comment详情</h1>
+    <?php echo $breadcrumbs; ?>
+    <table>
+      <tbody>
+        <tr>
+          <td>订单编号</td>
+          <td><?php echo $info['order_num']; ?></td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td><?php echo $info['type_name']; ?></td>
+        </tr>
+        <tr>
+          <td>score</td>
+          <td><?php echo $info['score_icon']; ?></td>
+        </tr>
+        <tr>
+          <td>item</td>
+          <td><?php echo $info['item_string']; ?></td>
+        </tr>
+        <tr>
+          <td>content</td>
+          <td><?php echo $info['content']; ?></td>
+        </tr>
+        <tr>
+          <td>日期</td>
+          <td><?php echo $info['create_date']; ?></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<?php $this->load->view('admin/public/footer.html'); ?>

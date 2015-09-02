@@ -1,0 +1,56 @@
+<?php $this->load->view('mobile/public/header.html'); ?>
+<div class="container"><img src="<?php echo base_url(); ?>/foundation/images/pbm_index_bg.jpg"></div>
+<!-- top nav Begin-->
+<nav class="top-bar" data-topbar role="navigation">
+  <section class="middle tab-bar-section">
+    <h1 class="title_con">陪爸妈</h1>
+  </section>
+  <!--右上角服务信息删除
+  <div class="pbm_service_intro right">
+    <a href="<?php echo mobile_url('mobile/page/service_intro', 1); ?>">服务介绍</a>
+  </div>
+  -->
+</nav>
+<!-- top nav end-->
+<!--顶部幻灯 Begin-->
+  <ul data-orbit class="example-orbit" data-options="slide_number: false;bullets: true" style="width:100%!important">
+    <li>
+      <a href="http://mp.weixin.qq.com/s?__biz=MzIzMjAwNjYwMA==&mid=211642127&idx=1&sn=c43e1d10827ac8fa6591ff73c6e650c3">
+      <img src="<?php echo base_url(); ?>foundation/images/index_slide1.jpg" alt="" />
+      </a>
+    </li>
+    <li class="active">
+      <a href="http://mp.weixin.qq.com/s?__biz=MzIzMjAwNjYwMA==&mid=211641286&idx=1&sn=8eaf8bf4f79dd337d4ad920109a8cf74">
+      <img src="<?php echo base_url(); ?>foundation/images/index_slide2.jpg" alt="" />
+    </a>
+    </li>
+  </ul>
+<!--顶部幻灯 End-->
+<!--index-main Begin-->
+<div class="pbm_index_con">
+  <div class="row ">
+      <div class="small-6 columns pbm_ask">
+        <a href="<?php echo mobile_url('mobile/page/question', 1); ?>">
+        <img src="<?php echo base_url(); ?>foundation/images/pbm_index_ask.png">
+        常见问题
+        </a>
+      </div>
+      <div class="small-6 columns pbm_card">
+        <a href="<?php echo mobile_url('mobile/page/service_intro', 1); ?>">
+        <img src="<?php echo base_url(); ?>foundation/images/pbm_index_service.png">
+        服务介绍
+        </a>
+      </div>
+  </div>
+  <div class="row">
+    <a href="<?php echo mobile_url('mobile/service', 1); ?>">
+      <div class="small-12 large-12 columns pbm_start">
+      <img src="<?php echo base_url(); ?>foundation/images/pbm_index_yy.png" style="margin-right:20px"> 一键预约
+      </div>
+    </a>
+  </div>
+</div>
+<!--index-main End-->
+<!--container End-->
+<?php $this->load->view('mobile/public/btn_bar.html'); ?>
+<?php $this->load->view('mobile/public/footer.html'); ?>

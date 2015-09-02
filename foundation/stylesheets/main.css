@@ -1,0 +1,460 @@
+html,body{
+	font-family: arial,'Microsoft YaHei','Hiragino Sans GB';
+}
+nav{
+	height: 100px;
+	background: #f6f6f6;
+}
+.pbm_header{
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
+}
+.logo{
+	display: block;
+	position: absolute;
+	width: 240px;
+	top: 10px;
+	left: 100px;
+}
+.logo img{
+	width: 100%
+}
+.pbm_nav{
+	text-align: center;;
+	position: relative;
+	float: right;
+	margin-right: 100px;
+}
+.pbm_nav li{
+	display: inline-block;
+	padding: 0 32px;
+	line-height: 100px;
+}
+.pbm_nav li a{
+	font-size: 20px;
+	color: #000;
+}
+.pbm_nav li.on a{
+	color: #d9527a;
+}
+.pbm_nav li a:hover{
+	color: #d9527a;
+}
+
+.pbm_banner_index{
+	width: 100%;
+	margin: 0 auto;
+}
+.pbm_banner_index img{
+	width: 100%;
+	position: relative;
+	top:-2px;
+}
+/*ourservice*/
+.service{
+	width: 100%;
+	margin-top: 20px;
+
+
+}
+.pbm_ourservice{
+	width: 1200px;
+	margin: 0 auto 40px;
+}
+.pbm_ourservice .hd{
+	padding: 30px 0 30px;
+}
+.pbm_ourservice p.intro{
+	color: #807777;
+	text-align: left;
+	font-size: 20px;
+	line-height: 32px;
+	padding-bottom: 20px;
+	letter-spacing:1px;
+	text-indent:2em;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+.pbm_ourservice ul{
+	height: 600px;
+	width: 1200px;
+	margin-top: 60px;
+
+}
+.pbm_ourservice li{
+	float: left;
+	text-align: center;
+	width: 320px;
+	margin-right: 40px;
+	margin-left: 40px;
+	background: #f2f2f2;
+	margin-top: 100px;
+	height: 450px;
+	position: relative;
+}
+.pbm_ourservice li a{
+	display: block;
+	height: 450px;
+	border-bottom:2px solid #f7f7f7;
+}
+.pbm_ourservice li h4{
+	color: #da5178;
+	font-size: 28px;
+	font-weight: 500;
+	padding-top: 180px;
+	letter-spacing:8px;
+}
+.pbm_ourservice li p{
+	color: #807777;
+	font-size: 16px;
+	position: relative;
+	z-index: 2;
+	padding: 50px 30px;
+	line-height: 26px;
+}
+.pbm_ourservice li img{
+	width: 250px;
+	position: absolute;
+	top: -110px;
+	left: 20px;
+}
+/*pbm_standard*/
+.pbm_standard{
+	background: #fff;
+	height: 600px;
+	clear: both;
+	display: block;
+}
+.pbm_standard ul{
+	width: 1200px;
+	margin: 0 auto;
+	clear: both;
+	display: block;
+}
+.pbm_standard li{
+	width: 320px;
+	float: left;
+	text-align: center;
+	margin: 0 40px;
+}
+.pbm_standard .ico{
+	display: block;
+	margin: 60px auto 20px;
+}
+.pbm_standard strong{
+	color: #333;
+	font-size: 24px;
+	display: block;
+	margin-bottom: 5px;
+	font-weight: 500;
+	font-family: "Microsoft Yahei";
+}
+.pbm_standard p{
+	color: #807777;
+	font-size: 16px;
+	padding: 50px 60px;
+	line-height: 26px;
+	text-align: left;
+}
+
+.hd{
+	padding: 50px 0;
+	text-align: center;
+	position: relative;
+	z-index: 2;
+}
+.hd h2{
+	color: #333; 
+	font-size: 46px; 
+	line-height: 50px; 
+	font-weight: normal;
+	position: relative; 
+	z-index: 100;
+	letter-spacing:3px;
+}
+.hd h2 span{
+	color: #666;
+	font-size: 30px;
+	display: block;
+}
+
+/*footer*/
+footer{
+background: #f2f2f2;
+height: 220px;
+border-top: 2px solid #da5178;
+}
+.pbm_foot{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.pbm_foot ul{
+	width: 1200px;
+	margin: 0 auto;
+	clear: both;
+	display: block;
+}
+.pbm_foot li{
+	width: 320px;
+	float: left;
+	text-align: center;
+	margin: 0 40px;
+}
+.pbm_foot .ico{
+	display: block;
+	margin: 60px auto 20px;
+}
+.pbm_foot strong{
+	color: #333;
+	font-size: 24px;
+	display: block;
+	margin-bottom: 5px;
+	font-weight: 500;
+	font-family: "Microsoft Yahei";
+}
+.pbm_foot p{
+	color: #807777;
+	font-size: 16px;
+	line-height: 26px;
+	text-align: center;
+}
+
+
+
+/*faq页面css*/
+.faq_top{
+	width: 100%;
+	margin: 0 auto;
+	height: 100px;
+	text-align: center;
+	background: #da4f76;
+
+}
+.faq_top h1{
+	color: #fff;
+	font-size: 30px;
+	height: 100px;
+	line-height: 100px;
+	font-family: Microsoft YaHei;
+	letter-spacing:5px;
+}
+.main{
+	width: 1200px;
+	margin: 0 auto;
+}
+.main_con{
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.main_con h2{
+	font-size: 28px;
+	color: #000;
+}
+.main_con_main{
+	margin-top: 20px;
+
+
+}
+.main_con_hd{
+	height: 30px;
+	line-height: 30px;
+
+
+}
+.main_con_hd h3{
+	margin: 10px 20px 10px 20px;
+	height: 30px;
+	line-height: 30px;
+	color: #333;
+	font-size:1.4em; 
+
+}
+.main_con_bd{
+	margin-top: 40px;
+	padding: 10px 20px;
+}
+.main_con_bd p{
+	color: #666;
+	font-size: 1em;
+	line-height: 1.5em;
+
+}
+.main_con_bd img{
+	width: 90%;
+	max-width: 500px;
+	margin: 5px 20px;
+}
+/*join*/
+.join_top{
+	width: 100%;
+	height: 100px;
+	margin: 0 auto;
+	text-align: center;
+}
+.join_top h1{
+	color: #000;
+	font-size: 30px;
+	height: 100px;
+	line-height: 100px;
+	font-family: Microsoft YaHei;
+	letter-spacing:5px;
+}
+ .main_con_bd p{
+	color: #666;
+	font-size: 1em;
+	line-height: 2em;
+}
+.join_btm{
+	width: 100%;
+	height: 80px;
+	margin: 20px auto;
+	text-align: center;
+}
+
+.pbm_bm{
+	width: 250px;
+	height: 80px;
+	background: #da5178;
+	margin:0 auto;
+	color: #fff;
+	line-height: 80px;
+	font-size: 28px;
+	letter-spacing:3px;
+}
+/*弹出*/
+.pbm_sign{
+	position: fixed;
+	top:50%;
+	left: 50%;
+	margin-left: -400px;
+	margin-top: -250px;
+	width: 800px;
+	z-index: 1000;
+
+	height: 500px;
+	display: none;
+
+}
+.pbm_sign_main{
+		background: #da5178;
+		height: 300px;
+		font-size: 18px;
+}
+.pbm_sign_row{
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	float: left;
+	margin: 5px 0;
+}
+.pbm_sign_tit{
+	width: 90px;
+	height: 40px;
+	float: left;
+	padding-left: 30px
+}
+
+.pbm_sign_con{
+	width: 260px;
+	height: 40px;
+	float: left;
+	display: block;
+}
+.sex_b{
+	width: 40px;
+	text-align: center;
+	float: left;
+	margin: 0 40px;
+}
+.sex_g{
+	width: 40px;
+	text-align: center;
+	float: left;
+	margin: 0 40px;
+}
+.sex_b.active{
+	background: url("../images/home/sex_bg.png");
+}
+.sex_g.active{
+	background: url("../images/home/sex_bg.png");
+}
+.pbm_sign_con1{
+	width: 140px;
+	float: left;
+	display: block;
+}
+.pbm_sign_con2{
+	width: 100px;
+	float: left;
+	display: block;
+	margin-left: 38px;
+	border: 1px solid #fff;
+	text-align: center;
+	line-height: 38px;
+	height: 38px;
+}
+
+
+
+.black{
+	background: #000;
+	opacity: .5;
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+	display: none;
+}
+.pbm_sign_up{
+	border: 1px solid #fff;
+	height: 40px;
+	width: 280px;
+	float: right;
+	text-align: center;
+	margin-top: 10px;
+}
+.pbm_sign_upp{
+	width: 280px;
+	text-align: center;
+	float: right;
+	font-size: 14px;
+}
+form{
+	width: 400px;
+	padding-top: 20px;
+	float: left;
+}
+input{
+	width: 100%;
+}
+input[type="radio"]{
+	width: 50%;
+	float: left;
+
+}
+input, select{
+	font-family: Microsoft YaHei;
+	border: none;
+	font-weight: inherit;
+	line-height: inherit;
+	padding: 0;
+	-webkit-appearance:none;
+	background-color:#fff;
+	padding-left: 20px;
+	font-size: 16px;
+}
+.pbm_sign_right{
+	float: right;
+	width: 400px;
+	text-align: center;
+	margin-top: 90px;
+}
+.turn_off{
+	top: 2px;
+	right: 2px;
+	position: absolute;
+}

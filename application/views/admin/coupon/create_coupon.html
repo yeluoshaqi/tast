@@ -1,0 +1,29 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<?php $this->load->view('admin/public/top.html'); ?>
+<div class="row">
+  <div class="medium-2 columns">
+        <?php $this->load->view('admin/public/side.html'); ?>
+  </div>
+  <div class="medium-10 columns">
+    <h1>创建优惠券</h1>
+  </div>
+   <form id="action-bar" method="POST" action="<?php echo site_url(); ?>/admin/coupon/create_coupon">
+          <input type="hidden" name="cid" value="<?php echo $cid ?>">
+          <div class="row">
+            <div class="small-6 medium-4 columns">
+              <div class="row collapse">
+                <div class="small-3 medium-3 columns">
+                  <span class="prefix">数量</span>
+                </div>
+                <div class="small-9 medium-9 columns">
+                  <input type="text" name="nub" placeholder="请输入优惠券数量" value="">
+                </div>
+              </div>
+            </div>
+            <div class="small-6 medium-4 columns left">
+              <button class="button tiny alert" >生成</button>
+            </div>
+          </div>
+        </form>
+</div>
+<?php $this->load->view('admin/public/footer.html'); ?>

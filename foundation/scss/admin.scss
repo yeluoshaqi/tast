@@ -1,0 +1,109 @@
+@import "settings";
+@import "foundation";
+
+// Or selectively include components
+// @import
+//   "foundation/components/accordion",
+//   "foundation/components/alert-boxes",
+//   "foundation/components/block-grid",
+//   "foundation/components/breadcrumbs",
+//   "foundation/components/button-groups",
+//   "foundation/components/buttons",
+//   "foundation/components/clearing",
+//   "foundation/components/dropdown",
+//   "foundation/components/dropdown-buttons",
+//   "foundation/components/flex-video",
+//   "foundation/components/forms",
+//   "foundation/components/grid",
+//   "foundation/components/inline-lists",
+//   "foundation/components/joyride",
+//   "foundation/components/keystrokes",
+//   "foundation/components/labels",
+//   "foundation/components/magellan",
+//   "foundation/components/orbit",
+//   "foundation/components/pagination",
+//   "foundation/components/panels",
+//   "foundation/components/pricing-tables",
+//   "foundation/components/progress-bars",
+//   "foundation/components/reveal",
+//   "foundation/components/side-nav",
+//   "foundation/components/split-buttons",
+//   "foundation/components/sub-nav",
+//   "foundation/components/switches",
+//   "foundation/components/tables",
+//   "foundation/components/tabs",
+//   "foundation/components/thumbs",
+//   "foundation/components/tooltips",
+//   "foundation/components/top-bar",
+//   "foundation/components/type",
+//   "foundation/components/offcanvas",
+//   "foundation/components/visibility";
+
+
+#login-box {
+    background: $white-smoke;
+    margin-top: 100px;
+    padding: 20px 20px 10px;
+    border-top: 5px solid $primary-color;
+}
+
+#action-bar {
+    margin-bottom: 1rem;
+    input, select{
+        margin-bottom: 0.2rem;
+    }
+    .button {
+        margin-top: 0.2rem;
+        margin-bottom: 0.2rem;
+    }
+}
+
+.pagination {
+    margin-top: 0.2rem;
+}
+
+.select_check {
+    width:20px;
+    height:20px;
+    text-align:center;
+    line-height:20px;
+    border:1px solid #D5D1CB;
+}
+
+.fa-check {
+    color: $primary-color;
+}
+.fa-circle-o {
+    color: $alert-color;
+}
+.fa-weixin, .fa-phone{
+    color: $success-color;
+}
+.fa-star {
+    color: $success-color;
+}
+
+input[type="city"] {
+    @extend input[type="text"];
+}
+
+#nurse_date {
+    width: 100%;
+
+    td {
+        text-align: center;
+        &:hover {
+            background-color: $primary-color;
+            color: #fff;
+        }
+    }
+
+    .active {
+        background-color: $success-color;
+        color: #fff;
+    }
+}
+#nurse_time {
+    margin-left: 0;
+    list-style-type: none;
+}

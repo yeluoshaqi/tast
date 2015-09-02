@@ -1,0 +1,57 @@
+<?php $this->load->view('mobile/public/header.html'); ?>
+<!--用户评价医生-->
+<!-- top nav Begin-->
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a class="pbm_back" href="<?php echo mobile_url('mobile/order/info/'.$order_id, 1); ?>"><img src="<?php echo base_url(); ?>foundation/images/pbm_back.png"></a></h1>
+    </li>
+  </ul>
+  <section class="middle tab-bar-section">
+    <h1 class="title_con">评价</h1>
+  </section>
+</nav>
+<!-- top nav end-->
+<!--form部分 Begin-->
+<div class="container_con">
+
+<form method="POST" action="<?php echo mobile_url('mobile/order/comment', 1); ?>" onsubmit="return comment_check()">
+  <input type="hidden" name="item_id" value="<?php echo $order_id; ?>">
+  <input type="hidden" name="type" value="1">
+  <div class="row">
+    <div class="small-12 columns marginTop10">
+      <label>得分
+        <input type="star" class="marginTop10" name="score">
+      </label>
+    </div>
+    <div class="small-12 columns marginTop10">
+      <div class="row">
+        <div class="small-6 columns marginTop10">
+          <input id="item1" type="checkbox" name="item[]" value="1"><label for="item1" class="conment_text">没有准时拜访</label>
+        </div>
+        <div class="small-6 columns marginTop10">
+          <input id="item2" type="checkbox" name="item[]" value="2"><label for="item2"  class="conment_text">体检时没带好手套</label>
+        </div>
+        <div class="small-6 columns marginTop10">
+          <input id="item3" type="checkbox" name="item[]" value="3"><label for="item3" class="conment_text">进门没带好鞋套</label>
+        </div>
+        <div class="small-6 columns marginTop10">
+          <input id="item4" type="checkbox" name="item[]" value="4"><label for="item4"  class="conment_text">没主动出示随身物品</label>
+        </div>
+      </div>
+    </div>
+    <div class="small-12 columns marginTop10">
+      <label>
+        <textarea class="marginTop10" name="content" placeholder="给服务人员一些感谢或者建议吧，谢谢啦^ ^"></textarea>
+      </label>
+    </div>
+    <div class="small-12 columns" style="margin-bottom:80px;">
+      <input type="submit" class="button tiny expand" value="提交">
+    </div>
+  </div>
+</form>
+
+</div>
+<!--form部分 End-->
+<?php $this->load->view('mobile/public/footer.html'); ?>
+<script src="<?php echo base_url(); ?>foundation/js/star.js"></script>

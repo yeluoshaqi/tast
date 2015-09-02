@@ -1,0 +1,39 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<?php $this->load->view('admin/public/top.html'); ?>
+<div class="row">
+  <div class="medium-2 columns">
+    <?php $this->load->view('admin/public/side.html'); ?>
+  </div>
+  <div class="medium-10 columns">
+    <h1>添加文本回复</h1>
+    <?php echo $breadcrumbs; ?>
+    
+    <form method="post" action="<?php echo site_url(); ?>/admin/host/textcreate" >
+      <div class="row">
+      <input type="hidden" name="type" value="文本回复"><!--routes-->
+      <div class="large-12 columns <?php if(form_error('keyword')) echo 'error'; ?>">
+        <label>关键字段
+          <input type="text" name="keyword" value="<?php echo set_value('keyword'); ?>"><!--routes&text-->
+        </label>
+        <?php echo form_error('keyword'); ?>
+      </div>
+      <div class="large-12 columns columns <?php if(form_error('wx_id')) echo 'error'; ?>">
+        <label>微信账号</label>
+        <input type="radio" name="wx_id" value="1" id="wx_id_1"><label for="wx_id_1">用户端微信</label>
+        <input type="radio" name="wx_id" value="2" id="wx_id_2"><label for="wx_id_2">众包端微信</label>
+        <?php echo form_error('wx_id'); ?>
+      </div>
+      <div class="large-12 columns columns columns <?php if(form_error('content')) echo 'error'; ?>">
+        <label>回复内容
+          <input type="text" name="content" value="<?php echo set_value('content'); ?>"><!--text-->
+        </label>
+        <?php echo form_error('content'); ?>
+      </div>
+      <div class="large-12 columns">
+        <input class="button tiny" type="submit" value="添加">
+      </div>
+      </div>
+    </form>
+  </div>
+</div>
+<?php $this->load->view('admin/public/footer.html'); ?>

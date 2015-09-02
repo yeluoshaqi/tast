@@ -1,0 +1,35 @@
+<?php $this->load->view('mobile/public/header.html'); ?>
+
+
+<!-- top nav Begin-->
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name hide">
+      <h1><a class="pbm_back" href="javascript:window.history.back(-1)"><img src="<?php echo base_url(); ?>foundation/images/pbm_back.png"></a></h1>
+    </li>
+  </ul>
+  <section class="middle tab-bar-section">
+    <h1 class="title_con">健康</h1>
+  </section>
+</nav>
+<!-- top nav end-->
+<!--成员信息Begin-->
+<div class="container"><img src="<?php echo base_url(); ?>/foundation/images/pbm_index_bg2.jpg"></div>
+  <div class="small-12 columns">
+    <?php if($list){ ?>
+    <?php foreach($list as $row){ ?>
+    <a href="<?php echo mobile_url('mobile/health/health_info/'.$row['id'], $this->session->userdata['wx']); ?>">
+      <div class="panel marginTop10">
+        <h5><?php echo $row['title']; ?>:<span style="color:#999; padding-left:15px"><?php echo $row['name']; ?></span></h5>
+        <p style="color:#999"><?php echo $row['address']; ?></p>
+      </div>
+    </a>
+    <?php } ?>
+    <?php }else{ ?>
+    <h4>暂时没有数据</h4>
+    <?php } ?>
+  </div>
+
+<!--成员信息End-->
+<?php $this->load->view('mobile/public/btn_bar.html'); ?>
+<?php $this->load->view('mobile/public/footer.html'); ?>

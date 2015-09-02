@@ -1,0 +1,46 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<?php $this->load->view('admin/public/top.html'); ?>
+<div class="row">
+  <div class="medium-2 columns">
+    <?php $this->load->view('admin/public/side.html'); ?>
+  </div>
+  <div class="medium-10 columns">
+
+    <h1>城市管理</h1>
+
+    <?php if($this->session->flashdata('result_code')){ ?>
+    <div data-alert class="alert-box">
+      <?php echo $this->session->flashdata('result_msg'); ?>
+      <a herf="#" class="close">&times;</a>
+    </div>
+    <?php } ?>
+
+    <?php echo $breadcrumbs; ?>
+    <div id="list-action-bar">
+      <a class="button tiny" href="<?php echo site_url(); ?>/admin/city/create">添加</a>
+    </div>
+    <table class=".clearfix">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>上级区域</th>
+          <th>城市名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if($list){ ?>
+        <?php foreach($list as $row){ ?>
+        <tr>
+          <td><a href="<?php echo site_url().'/admin/city/update/'.$row['id']; ?>"><?php echo $row['id']; ?></a></td>
+          <td><?php echo $row['parent_id']; ?></td>
+          <td><?php echo $row['name']; ?></td>
+        </tr>
+        <?php } ?>
+        <?php }else { ?>
+        <?php } ?>
+      </tbody>
+    </table>
+    <?php echo $this->pagination->create_links(); ?>
+  </div>
+</div>
+<?php $this->load->view('admin/public/footer.html'); ?>

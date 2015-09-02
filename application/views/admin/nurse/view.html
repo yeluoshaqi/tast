@@ -1,0 +1,150 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<?php $this->load->view('admin/public/top.html'); ?>
+<div class="row">
+  <div class="medium-2 columns">
+    <?php $this->load->view('admin/public/side.html'); ?>
+  </div>
+  <div class="medium-10 columns">
+    <h1>用户信息</h1>
+    <?php if($this->session->flashdata('result_code')){ ?>
+    <div data-alert class="alert-box">
+      <?php echo $this->session->flashdata('result_msg'); ?>
+      <a href="#" class="close">&times;</a>
+    </div>
+    <?php } ?>
+
+    <?php echo $breadcrumbs; ?>
+    <div class="row">
+      <!-- <div class="small-12 medium-6 columns"> -->
+      <!--   <table> -->
+      <!--     <tbody> -->
+      <!--       <tr> -->
+      <!--         <td>姓名</td> -->
+      <!--         <td><?php echo $info['name']; ?></td> -->
+      <!--       </tr> -->
+      <!--       <tr> -->
+      <!--         <td>头像</td> -->
+      <!--         <td> -->
+      <!--           <img src="<?php echo $info['avatar']; ?>"> -->
+      <!--         </td> -->
+      <!--       </tr> -->
+      <!--       <tr> -->
+      <!--         <td>电话</td> -->
+      <!--         <td><?php echo $info['mobile']; ?></td> -->
+      <!--       </tr> -->
+      <!--       <tr> -->
+      <!--         <td>地址</td> -->
+      <!--         <td><?php if($info['city_array']) echo $info['city_array'][0]['name'].$info['city_array'][1]['name'].$info['city_array'][2]['name']; ?></td> -->
+      <!--       </tr> -->
+      <!--       <tr> -->
+      <!--         <td>状态</td> -->
+      <!--         <td><?php echo $info['status_string']; ?></td> -->
+      <!--       </tr> -->
+      <!--     </tbody> -->
+      <!--   </table> -->
+      <!-- </div> -->
+      <div class="small-12 medium-5 columns">
+        <form method="POST" action="<?php echo site_url().'/admin/nurse/update'; ?>">
+          <input type="hidden" name="id" value="<?php echo $info['id']; ?>">
+          <div class="row">
+            <div class="small-12 columns">
+              <label>Avatar</label>
+              <img src="<?php echo $info['avatar']; ?>" width="200">
+            </div>
+
+            <div class="small-12 columns">
+              <label>Mobile
+                <input type="number" name="mobile" value="<?php echo $info['mobile']; ?>">
+              </label>
+            </div>
+            <div class="small-12 columns">
+              <label>City
+                <input type="city" name="city" value="<?php if($info['city_array']) echo $info['city_array'][0]['name'].','.$info['city_array'][1]['name'].','.$info['city_array'][2]['name']; ?>">
+              </label>
+            </div>
+            <div class="small-12 columns">
+              <label>Address
+                <input type="text" name="address" value="<?php echo $info['address']; ?>">
+              </label>
+            </div>
+            <div class="small-12 columns">
+              <label>状态
+                <select name="status">
+                  <?php foreach($status_list as $key=>$value){ ?>
+                  <option value="<?php echo $key; ?>" <?php if($key == $info['status']) echo 'selected'; ?>><?php echo $value; ?></option>
+                  <?php } ?>
+                </select>
+              </label>
+            </div>
+            <div class="small-12 columns">
+              <input type="submit" value="提交" class="button tiny">
+              <a class="button tiny alert" href="#" data-reveal-id="delete_check">删除</a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="small-12 medium-7 columns">
+        <div class="row">
+          <div class="small-12 medium-8 columns">
+            <?php echo $calendar; ?>
+          </div>
+          <div class="small-12 medium-4 columns">
+            <ul id="nurse_time">
+            </ul>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="delete_check" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">请注意!</h2>
+  <p class="lead">如果点击删除，此信息将无法找回！</p>
+  <a class="button tiny alert" href="<?php echo site_url().'/admin/member/delete/'.$info['id']; ?>">
+    删除
+  </a>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+<?php $this->load->view('admin/public/footer.html'); ?>
+<script src="<?php echo base_url(); ?>foundation/js/city.js"></script>
+<script src="<?php echo base_url(); ?>foundation/js/nurse_date.js"></script>
+<script>
+  $(function(){
+    var today = $("#nurse_date").find(".highlight");
+    if(today.length == 1){
+      today.parent("td").addClass("current");
+      var time_list = get_init_time_list();
+      $("#nurse_time").html(time_list);
+    }
+
+    var days = $(".nurse_date_item");
+    url1 = '<?php echo site_url()."/api/check_date"; ?>';
+    url2 = '<?php echo site_url()."/api/update_date_time"; ?>';
+    nurse_id = '<?php echo $this->uri->segment(4); ?>';
+    year = '<?php echo $year; ?>';
+    month = '<?php echo $month; ?>';
+    var data = '';
+    days.each(function(index,element){
+      data = {nurse_id:nurse_id,date:year+'-'+month+'-'+$(this).html()};
+      var item = $(this);
+      $.ajax({
+        url: url1,
+        data: data,
+        type: "POST",
+        async: true,
+        success: function(result){
+          if(result == 1){
+            if(!item.hasClass("active")){
+              item.addClass("active");
+            }
+          }
+        }
+      });
+    });
+
+  });
+</script>

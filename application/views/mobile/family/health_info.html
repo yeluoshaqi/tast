@@ -1,0 +1,102 @@
+<?php $this->load->view('mobile/public/header.html'); ?>
+<!-- top nav Begin-->
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a class="pbm_back" href="<?php echo mobile_url('mobile/health/health_list', $this->session->userdata['wx']); ?>"><img src="<?php echo base_url(); ?>foundation/images/pbm_back.png"></a></h1>
+    </li>
+  </ul>
+  <section class="middle tab-bar-section">
+    <h1 class="title_con">健康状况</h1>
+  </section>
+</nav>
+<!-- top nav end-->
+
+<div class="container"><img src="<?php echo base_url(); ?>/foundation/images/pbm_index_bg.jpg"></div>
+
+<!--顶部选项卡 Begin-->
+  <ul class="tabs expand row " data-tab  id="order_tabs" style="border-top:1px solid #fff">
+    <li class="tab-title small-6 columns active"><a href="#panel2">健康视图</a></li>
+    <li class="tab-title small-6 columns" style="border-right:none!important;"><a href="#panel1">健康列表</a></li>
+  </ul>
+<!--顶部选项卡 End-->
+<div class="tabs-content" >
+  <!--健康列表Begin-->
+  <div class="content" id="panel1" style="margin-bottom:60px">
+    <!--以下信息为乱填-->
+    <?php if($list){ ?>
+    <?php foreach($list as $row){ ?>
+    <div class="row">
+      <div class="small-12 columns">
+        <a href="#">
+          <div class="panel columns pbm_fs13">
+            <div class="row">
+              <div class="small-12">
+                订单编号：<?php echo $row['num']; ?>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12">上门时间：<span><?php echo $row['date'].' '.$row['time']; ?></span></div>
+            </div>
+            <div class="row">
+              <div class="small-12">服务人员：<span><?php echo $row['nurse']['name']; ?></span></div>
+            </div>
+            <div class="row">
+              <div class="small-12">
+                <?php if($row['entry_list']){ ?>
+                <?php foreach($row['entry_list'] as $log){ ?>
+                <span class="pbm_healthinfo small-6"><?php echo $log['name'].':'.$log['value'].$log['unit']; ?></span>
+                <?php } ?>
+                <?php } ?>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <?php } ?>
+    <?php } ?>
+  </div>
+  <!--健康列表end-->
+  <!--健康视图 Begin-->
+  <div class="content active" id="panel2" style="margin-bottom:60px">
+    <div class="row">
+      <!--健康信息 Begin-->
+      <div class="row ">
+        <div class="small-12 columns ">
+          <h4 class="marginTop10" style="border:1px solid #eee; border-radius:5px; height:70px; line-height:70px"><span style="padding-left:20px" >健康检测</h4>
+        </div>
+      </div>
+      <!--健康信息 End-->
+      <!--健康信息图表部分 Begin-->
+      <div class="row columns">
+        <div class="small-12 columns marginTop10" style="border-radius:5px;height:400px;">
+          <h4>视图<small></small></h4>
+          <canvas style="width:100%;height:300px;"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--健康视图 End-->
+</div>
+
+<?php $this->load->view('mobile/public/footer.html'); ?>
+<script src="<?php echo base_url(); ?>/foundation/bower_components/chartjs/Chart.min.js"></script>
+
+<script>
+  $.ajax({
+    url: '<?php echo site_url()."/api/get_data/".$id; ?>',
+    type: 'GET',
+    dataType: 'json',
+    success: function(data){
+      var small = "&nbsp;&nbsp;";
+      for(var i=0; i<data.datasets.length; i++){
+        small += '<span style="color:'+data.datasets[i].pointColor+'">'+data.datasets[i].label+'</span>&nbsp;|&nbsp;';
+      }
+      $("small").html(small);
+      var ctx = $("canvas").get(0).getContext("2d");
+      var chart = new Chart(ctx).Line(data,{});
+    }
+  });
+</script>
+<!--健康信息图表部分 End-->

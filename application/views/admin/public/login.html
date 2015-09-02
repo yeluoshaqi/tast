@@ -1,0 +1,38 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<div class="row">
+  <div class="small-10 small-centered medium-4 medium-centerd large-4 large-centerd columns" id="login-box">
+    <h3>登录</h3>
+
+    <?php if(isset($error_msg)){ ?>
+    <div data-alert class="alert-box alert">
+      <?php echo $error_msg; ?>
+      <a href="#" class="close">&times;</a>
+    </div>
+    <?php } ?>
+
+    <form method="post" action="<?php echo site_url(); ?>/admin/login">
+      <div class="row">
+        <div class="large-12 columns <?php if(form_error('name')) echo 'error'; ?>">
+          <label>姓名
+            <input type="text" name="name" value="<?php echo set_value('name'); ?>">
+          </label>
+          <?php echo form_error('name'); ?>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns <?php if(form_error('password')) echo 'error'; ?>">
+          <label>密码
+            <input type="password" name="password">
+          </label>
+          <?php echo form_error('password'); ?>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <input class="button small" type="submit" value="登录">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<?php $this->load->view('admin/public/footer.html'); ?>

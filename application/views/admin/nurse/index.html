@@ -1,0 +1,133 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<?php $this->load->view('admin/public/top.html'); ?>
+<div class="row">
+  <div class="medium-2 columns">
+    <?php $this->load->view('admin/public/side.html'); ?>
+  </div>
+  <div class="medium-10 columns">
+
+    <div class="row">
+      <div class="small-12 columns">
+        <h1>众包管理</h1>
+        <?php if($this->session->flashdata('result_code')){ ?>
+        <div data-alert class="alert-box">
+          <?php echo $this->session->flashdata('result_msg'); ?>
+          <a href="#" class="close">&times;</a>
+        </div>
+        <?php } ?>
+
+        <?php echo $breadcrumbs; ?>
+      </div>
+
+      <div class="small-12 columns">
+
+        <form id="action-bar" method="POST" action="#">
+          <input type="hidden" name="wx_id" value="2">
+          <div class="row">
+            <div class="small-6 medium-4 columns">
+              <div class="row collapse">
+                <div class="small-3 medium-3 columns">
+                  <span class="prefix">姓名</span>
+                </div>
+                <div class="small-9 medium-9 columns">
+                  <input type="text" name="name" placeholder="请输入用户姓名" value="<?php echo $search['name']; ?>">
+                </div>
+              </div>
+            </div>
+            <div class="small-6 medium-4 columns">
+              <div class="row collapse">
+                <div class="small-3 medium-3 columns">
+                  <span class="prefix">手机号码</span>
+                </div>
+                <div class="small-9 medium-9 columns">
+                  <input type="number" name="mobile" placeholder="请输入手机号码" value="<?php echo $search['mobile']; ?>">
+                </div>
+              </div>
+            </div>
+            <div class="small-6 medium-4 columns">
+              <div class="row collapse">
+                <div class="small-3 medium-3 columns">
+                  <span class="prefix">城市</span>
+                </div>
+                <div class="small-9 medium-9 columns">
+                  <input type="city" name="city">
+                </div>
+              </div>
+            </div>
+            <!-- <div class="small-6 medium-4 columns"> -->
+            <!--   <div class="row collapse"> -->
+            <!--     <div class="small-3 columns"> -->
+            <!--       <span class="prefix">类型</span> -->
+            <!--     </div> -->
+            <!--     <div class="small-9 columns"> -->
+            <!--       <select name="wx_id" class="expand"> -->
+            <!--         <option value="0">--请选择用户类别--</option> -->
+            <!--         <option value="1" <?php if($search['wx_id'] == 1) echo 'selected'; ?>>普通用户</option> -->
+            <!--         <option value="2" <?php if($search['wx_id'] == 2) echo 'selected'; ?>>服务人员</option> -->
+            <!--       </select> -->
+            <!--     </div> -->
+            <!--   </div> -->
+            <!-- </div> -->
+            <div class="small-6 medium-4 columns left">
+              <input type="submit" value="搜索" class="button tiny">
+              <button class="button tiny alert" onclick="return reset_form(this)">重置</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="small-12 columns">
+        <table>
+          <thead>
+            <tr>
+              <th><div class="select_check" onclick="all_check(this)"></div></th>
+              <th>ID</th>
+              <th>姓名</th>
+              <th>电话号</th>
+              <th>地址</th>
+              <th>昵称</th>
+              <th>status</th>
+              <th><a href="<?php echo $sort['reg_date']['url']; ?>">注册时间<i class="<?php echo $sort['reg_date']['icon']; ?>"></i></a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php if($list){ ?>
+            <?php foreach($list as $row){ ?>
+            <tr>
+              <td data-id="<?php echo $row['id']; ?>"><div class="select_check select_item" onclick="select_check(this)"></div></td>
+              <td><a href="<?php echo site_url().'/admin/nurse/view/'.$row['id']; ?>"><?php echo $row['id']; ?></a></td>
+              <td><?php echo $row['name']; ?></td>
+              <td><?php echo $row['mobile']; ?></td>
+              <td><?php echo $row['address']; ?></td>
+              <td><?php echo $row['nickname']; ?></td>
+              <td><?php echo $row['status_string']; ?></td>
+              <td><?php echo $row['reg_date']; ?></td>
+            </tr>
+            <?php } ?>
+            <?php }else{ ?>
+            <?php } ?>
+          </tbody>
+        </table>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <button id="more_action_button" href="#" data-dropdown="more_action" aria-controls="more_action" aria-expanded="false" class="button dropdown tiny" disabled>Action</button><br>
+        <ul id="more_action" data-dropdown-content class="f-dropdown" aria-hidden="true">
+          <li><a href="#" data-reveal-id="delete_check">删除</a></li>
+        </ul>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <?php echo $this->pagination->create_links(); ?>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="delete_check" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">请注意!</h2>
+  <p class="lead">如果点击删除，此信息将无法找回！</p>
+  <a class="button tiny alert" data-href="<?php echo site_url(); ?>/admin/nurse/delete" onclick="return more_delete(this)">
+    删除
+  </a>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+<?php $this->load->view('admin/public/footer.html'); ?>
+<script src="<?php echo base_url(); ?>foundation/js/city.js"></script>

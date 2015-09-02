@@ -1,0 +1,64 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<?php $this->load->view('admin/public/top.html'); ?>
+<div class="row">
+  <div class="medium-2 columns">
+    <?php $this->load->view('admin/public/side.html'); ?>
+  </div>
+  <div class="medium-10 columns">
+
+    <h1>菜单列表</h1>
+
+    <?php if($this->session->flashdata('result_code')){ ?>
+    <div data-alert class="alert-box">
+      <?php echo $this->session->flashdata('result_msg'); ?>
+      <a herf="#" class="close">&times;</a>
+    </div>
+    <?php } ?>
+
+    <?php echo $breadcrumbs; ?>
+    <div id="list-action-bar">
+      <a class="button tiny" href="<?php echo site_url(); ?>/admin/menu/upload/1">用户菜单</a>
+      <a class="button tiny" href="<?php echo site_url(); ?>/admin/menu/upload/2">众包菜单</a>
+      <a class="button tiny" href="<?php echo site_url(); ?>/admin/menu/create">添加</a>
+    </div>
+    <table class=".clearfix">
+      <thead>
+        <tr>
+          <th>菜单名称</th>
+          <th>微信号</th>
+          <!--<th>上级菜单</th>-->
+          <th>菜单类型</th>
+          <th>菜单值</th>
+          <!--<th>菜单排序</th>-->
+        </tr>
+      </thead>
+      <tbody>
+        <?php if($list){ ?>
+        <?php foreach($list as $row){ ?>
+        <tr>
+          <td><a href="<?php echo site_url().'/admin/menu/update/'.$row['id']; ?>"><?php echo $row['name']; ?></a></td>
+          <td><?php if($row['wx_id'] == 1){echo '用户端';}else{echo '众包端';} ?></td>
+          <!--<td><?php echo $row['top_id']; ?></td>-->
+          <td><?php if($row['type'] == 'view'){echo '链接';}else{ if($row['type'] == 'click'){echo '关键字';}else{ echo '';}} ?></td>
+          <td><?php echo $row['value']; ?></td>
+          <!--<td><?php echo $row['sort']; ?></td>-->
+        </tr>
+        
+        
+<!--        <?php foreach($row[data] as $children){ ?>
+        <tr>
+        <td><?php echo $children['id']; ?></td>
+        <td>--&nbsp;<?php echo $children['name']; ?></td>
+        
+        </tr>
+        <?php } ?>-->
+        
+        
+        <?php } ?>
+        <?php }else { ?>
+        <?php } ?>
+      </tbody>
+    </table>
+  </div>
+</div>
+<?php $this->load->view('admin/public/footer.html'); ?>

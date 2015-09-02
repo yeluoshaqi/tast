@@ -1,0 +1,42 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<?php $this->load->view('admin/public/top.html'); ?>
+<div class="row">
+  <div class="medium-2 columns">
+    <?php $this->load->view('admin/public/side.html'); ?>
+  </div>
+  <div class="medium-10 columns">
+    <h1>添加套餐</h1>
+    <?php echo $breadcrumbs; ?>
+    <form method="POST" action="<?php echo site_url(); ?>/admin/service/create">
+      <div class="row">
+        <div class="large-12 columns <?php if(form_error('name')) echo 'error'; ?>">
+          <label>套餐名称
+            <input type="text" name="name" value="<?php echo set_value('name'); ?>">
+          </label>
+          <?php echo form_error('name'); ?>
+        </div>
+        <div class="large-12 columns <?php if(form_error('intro')) echo 'error'; ?>">
+          <label>套餐内容
+            <textarea name="intro"><?php echo set_value('intro'); ?></textarea>
+          </label>
+          <?php echo form_error('intro'); ?>
+        </div>
+        <div class="large-12 columns <?php if(form_error('price')) echo 'error'; ?>">
+          <label>套餐价格
+            <input type="number" name="price" value="<?php echo set_value('price'); ?>">
+          </label>
+          <?php echo form_error('price'); ?>
+        </div>
+        <div class="large-12 columns ">
+          <label>状态</label>
+          <input type="radio" name="status" value="2" id="status1" checked><label for="status1">使用</label></input>
+          <input type="radio" name="status" value="1" id="status2"><label for="status2">不使用</label></input>
+        </div>
+        <div class="large-12 columns">
+          <input class="button tiny" type="submit" value="Create">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<?php $this->load->view('admin/public/footer.html'); ?>

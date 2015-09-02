@@ -1,0 +1,77 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<?php $this->load->view('admin/public/top.html'); ?>
+<div class="row">
+  <div class="medium-2 columns">
+    <?php $this->load->view('admin/public/side.html'); ?>
+  </div>
+  <div class="medium-10 columns">
+    <h1>编辑套餐</h1>
+
+    <?php echo $breadcrumbs; ?>
+
+    <?php if(isset($result_code)){ ?>
+    <div data-alert class="alert-box <?php if(!$result_code) echo 'alert'; ?>">
+      <?php echo $result_msg; ?>
+      <a href="#" class="close">&times;</a>
+    </div>
+    <?php } ?>
+
+    <form method="POST" action="<?php echo site_url(); ?>/admin/field/update">
+      <input type="hidden" name="id" value="<?php echo $info['id']; ?>">
+      <div class="row">
+        <div class="large-12 columns <?php if(form_error('name')) echo 'error'; ?>">
+          <label>名称
+            <input type="text" name="name" value="<?php echo $info['name']; ?>">
+          </label>
+          <?php echo form_error('name'); ?>
+        </div>
+        <div class="large-12 columns columns <?php if(form_error('color')) echo 'error'; ?>">
+          <label>Color
+            <input type="color" name="color" value="<?php echo $info['color']; ?>">
+          </label>
+          <?php echo form_error('color'); ?>
+        </div>
+        <div class="large-12 columns columns <?php if(form_error('type')) echo 'error'; ?>">
+          <label>Type
+            <input type="text" name="type" value="<?php echo $info['type']; ?>">
+          </label>
+          <?php echo form_error('type'); ?>
+        </div>
+        <div class="large-12 columns columns <?php if(form_error('unit')) echo 'error'; ?>">
+          <label>Unit
+            <input type="text" name="unit" value="<?php echo $info['unit']; ?>">
+          </label>
+          <?php echo form_error('unit'); ?>
+        </div>
+        <div class="large-12 columns columns <?php if(form_error('count')) echo 'error'; ?>">
+          <label>次数
+            <input type="number" name="count" value="<?php echo $info['count']; ?>">
+          </label>
+          <?php echo form_error('count'); ?>
+        </div>
+        <div class="large-12 columns columns <?php if(form_error('sort')) echo 'error'; ?>">
+          <label>Sort
+            <input type="number" name="sort" value="<?php echo $info['sort']; ?>">
+          </label>
+          <?php echo form_error('sort'); ?>
+        </div>
+        <div class="large-12 columns">
+          <input class="button tiny" type="submit" value="更新">
+          <a class="button tiny alert" href="#" data-reveal-id="delete_check">删除</a>
+        </div>
+      </div>
+    </form>
+
+
+  </div>
+</div>
+
+<div id="delete_check" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">请注意!</h2>
+  <p class="lead">如果您点击删除按钮，次信息将无法找回！</p>
+  <a class="button tiny alert" href="<?php echo site_url().'/admin/field/delete/'.$info['id']; ?>">
+    删除
+  </a>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+<?php $this->load->view('admin/public/footer.html'); ?>

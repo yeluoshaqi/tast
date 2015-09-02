@@ -1,0 +1,43 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<?php $this->load->view('admin/public/top.html'); ?>
+<div class="row">
+  <div class="medium-2 columns">
+    <?php $this->load->view('admin/public/side.html'); ?>
+  </div>
+  <div class="medium-10 columns">
+    <h1>服务记录详情</h1>
+    <?php echo $breadcrumbs; ?>
+    <table>
+      <tbody>
+        <tr>
+          <td>服务记录号</td>
+          <td><?php echo $info['order_num']; ?></td>
+        </tr>
+        <tr>
+          <td>姓名</td>
+          <td><?php echo $info['name']; ?></td>
+        </tr>
+        <tr>
+          <td>电话</td>
+          <td><?php echo $info['mobile']; ?></td>
+        </tr>
+        <tr>
+          <td>服务人员</td>
+          <td><?php echo $info['nurse_name']; ?></td>
+        </tr>
+        <tr>
+          <td>日期</td>
+          <td><?php echo $info['date']; ?></td>
+        </tr>
+        <?php foreach($fields as $row){ ?>
+        <tr>
+          <td><?php echo $row['name']; ?></td>
+          <td><?php echo $row['value'].' '.$row['unit']; ?></td>
+        </tr>
+        <?php } ?>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<?php $this->load->view('admin/public/footer.html'); ?>

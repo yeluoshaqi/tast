@@ -1,0 +1,11 @@
+<?php $this->load->view('mobile/public/header.html'); ?>
+<div class="row" id="success">
+  <div class="small-11 small-centered columns">
+    <div class="panel">
+      <h5>操作成功</h5>
+      <p>感谢您的参与</p>
+      <a class="button tiny" href="<?php echo mobile_url('mobile/message', $this->session->userdata['wx']); ?>">返回</a>
+    </div>
+  </div>
+</div>
+<?php $this->load->view('mobile/public/footer.html'); ?>

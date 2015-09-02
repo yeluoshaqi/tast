@@ -1,0 +1,269 @@
+<?php $this->load->view('home/public/header.html'); ?>
+<!--nav Begin-->
+<nav>
+	<div class="pbm_header">
+	<a href="<?php echo site_url(); ?>" class="logo"><img src="<?php echo base_url(); ?>foundation/images/home/logo.png"></a>
+
+		<ul class="pbm_nav">
+			<li><a href="<?php echo site_url(); ?>">首页</a></li>
+			<li class="on"><a href="<?php echo site_url(); ?>/join">加入众包端</a></li>
+			<li><a href="<?php echo site_url(); ?>/question">常见问题</a></li>
+			<li><a href="<?php echo site_url(); ?>/contact">加入我们</a></li>
+		</ul>
+	</div>
+</nav>
+<!--nav Begin-->
+<!--banner Begin-->
+	<div class="pbm_banner_index">
+		<img src="<?php echo base_url(); ?>foundation/images/home/join_banner.jpg">
+	</div>
+<!--banner End-->
+<!--top Begin-->
+<div class="join_top">
+	<h1>招募说明</h1>
+</div>
+<!--top End-->
+<div class="main">
+	<div class="main_con">
+		<div class="main_con_main">
+			<div class="main_con_hd">
+				<h3>人员要求</h3>
+			</div>
+			<div class="main_con_bd">
+				<p>• 身体健康，肢体活动无碍，有空闲时间</p>
+
+				<p>• 有爱心、耐心、责任心，愿意陪伴</p>
+
+				<p>• 经过培训，能使用简单的健康体检仪器，如测量血压、血氧、心率</p>
+
+				<p>• 善倾听、会聊天、爱笑，能用“正能量”感染别人</p>
+			</div>
+		</div>
+<div class="main_con_main">
+	<div class="main_con_hd">
+		<h3>工作内容</h3>
+	</div>
+	<div class="main_con_bd">
+		<p>• 简单体检与健康管理，为老人建立个人专属健康档案动态情况分析与报告</p>
+
+		<p>• 为“爸妈”们的日常琐事提供生活帮助，帮助老年人保持良好的心态，增加老年人的幸福感</p>
+
+	</div>
+</div>
+<div class="main_con_main">
+	<div class="main_con_hd">
+		<h3>加入流程</h3>
+	</div>
+	<div class="main_con_bd">
+		<p>• 关注微信公众号，扫码</p>
+		<img src="<?php echo base_url(); ?>foundation/images/home/wechat_code.jpg" style="width:300px">
+		<p>•拨打电话010－53609188</p>
+
+		<p>如果您、或您身边，
+			有热心肠的志愿者，愿意“一起陪爸妈”，欢迎自荐或推荐.
+			成长空间、价值感和收入，都值得期待</p>
+
+
+	</div>
+</div>
+<div class="join_btm">
+<div class="pbm_bm" onClick="sign()">
+	我要报名
+</div>
+</div>
+</div>
+</div>
+<!--弹出 Begin-->
+<div class="black"></div>
+<div class="pbm_sign">	
+	<div class="pbm_sign_main">
+		<div class="turn_off" onClick="turn_off()">
+			<img src="<?php echo base_url(); ?>foundation/images/home/pbm_sign_close.png">
+		</div>
+		<form>
+			<input type="hidden" name="sex" value="1" id="form_sex">
+			<fieldset>
+
+				<div class="pbm_sign_row">
+					<div class="pbm_sign_tit">
+						手机号：
+					</div>
+					<div class="pbm_sign_con">
+						<input type="tel" id="mobile" name="mobile"  placeholder="请输入手机号码">
+					</div>
+				</div>
+				<!--
+				<div class="pbm_sign_row">
+					<div class="pbm_sign_tit">
+						验证码：
+					</div>
+					<div class="pbm_sign_con1">
+						<input type="tel" id="code" name=""  placeholder="请输入验证码">
+					</div>
+					<div class="pbm_sign_con2" id="sendcode">
+					 	获取验证码
+					</div>
+				</div>
+				-->
+
+				<div class="pbm_sign_row">
+					<div class="pbm_sign_tit">
+						姓名：
+					</div>
+					<div class="pbm_sign_con">
+						<input type="text" id="name" name="name"  placeholder="请输入姓名">
+					</div>
+				</div>
+
+				<div class="pbm_sign_row">
+					<div class="pbm_sign_tit">
+						性别：
+					</div>
+					<div class="pbm_sign_con">
+						<span class="sex_b active" >男</span>
+						<span class="sex_g" >女</span>
+					</div>
+				</div>
+
+				<div class="pbm_sign_row">
+					<div class="pbm_sign_tit">
+						身份证号：
+					</div>
+					<div class="pbm_sign_con">
+						<input type="tel" id="IDcard" name=""  placeholder="请输入身份证号码">
+					</div>
+				</div>
+				<!--
+				<div class="pbm_sign_row">
+					<div class="pbm_sign_up">
+						上传医疗/护理相关资质证明照片
+						 <input type="hidden" name="uploadFile" />
+					</div>
+					<div class="pbm_sign_upp">若不上传，则在线下面试时携带相关证书</div>
+				</div>
+				-->
+			</fieldset>
+		</form>
+		<div class="pbm_sign_right">
+			<img src="<?php echo base_url(); ?>foundation/images/home/pbm_sign_logo.png">
+		</div>
+	</div>
+	<div class="join_btm" style="margin-top:40px;">
+		<div class="pbm_bm" id="tijao">
+			立即注册
+		</div>
+	</div>
+</div>
+<!--弹出 End-->
+<?php $this->load->view('home/public/footer.html'); ?>
+<script>
+$(function(){
+	$(".sex_b").click(function(){
+		if(!$(this).hasClass("active")){
+			$(this).addClass("active");
+			$(".sex_g").removeClass("active");
+			$("#form_sex").val(1);
+		}
+	});
+	$(".sex_g").click(function(){
+		if(!$(this).hasClass("active")){
+			$(this).addClass("active");
+			$(".sex_b").removeClass("active");
+			$("#form_sex").val(2);
+		}
+	});
+});
+	function sign(){
+		$(".pbm_sign").css("display","block");
+		$(".black").css("display","block");
+	}
+
+	function turn_off(){
+		$(".pbm_sign").css("display","none");
+		$(".black").css("display","none");
+	}
+
+	$('#tijao').click(function(){
+
+		var url = '<?php echo site_url(); ?>/register';
+		var mobile= $("#mobile").val();
+		var name= $("#name").val();
+		var code= $("#code").val();
+		var IDcard= $("#IDcard").val();
+		var data = $("form").serialize();
+
+		if(mobile == ''){
+			alert("请输入您的手机号！");
+		}else if(!isMobile(mobile)){
+			alert("请输入正确的手机号！");
+		}else if(name == ''){
+			alert("请输入您的姓名！");
+		}else if(name.length<2 || name.length>5 ){
+			alert("请输入正确的姓名！");
+		}else if(IDcard == ''){
+			alert("请输入您的身份证号码！");
+		}else if(!isIDcard(IDcard)){
+			alert("请输入正确的身份证号码！");
+		}
+		else{
+
+			$.ajax({
+			url: url,
+			data: data,
+			global: false,
+			type: "POST",
+			success: function(data){
+				if(data==1){
+					alert("您已注册成功");
+					$(".pbm_sign").css("display","none");
+					$(".black").css("display","none");
+					}
+				else if(data==0){
+					alert("注册失败，请联系客服");
+					}
+				}
+			});
+		}
+		return false;
+	});
+//手机号判断
+	function isMobile(s)
+	{
+	  var patrn=/^\s*(18\d{9}|15\d{9}|17\d{9}|14\d{9}|13[0-9]\d{8})\s*$/;
+	  var patrn0 = /^d{11}$/;
+	    if(!patrn.exec(s))
+	    {
+	        return false;
+	    }
+	    return true;
+	}
+//身份证号判断
+	function isIDcard(s)
+	{
+	  var patrn=/^[1-9]\d{16}[\d|x|X]$/;
+	    if(!patrn.exec(s))
+	    {
+	        return false;
+	    }
+	    return true;
+	}
+	/*短信验证
+	$('#sendcode').click(function(){
+		var btn= $('#sendcode');
+		var wait = 60;
+            if (wait == 0) {
+                btn.removeAttribute("disabled");
+                btn.value = "免费获取验证码";
+                wait = 60;
+            } else {
+                btn.setAttribute("disabled", true);
+                btn.value = wait + "秒后重新获取验证码";
+                wait--;
+                setTimeout(function () {
+                    time(btn);
+                },
+                1000)
+            }
+    });
+	*/
+</script>

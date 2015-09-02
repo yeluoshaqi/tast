@@ -1,0 +1,102 @@
+<?php $this->load->view('mobile/public/header.html'); ?>
+
+
+<!-- top nav Begin-->
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a class="pbm_back" href="<?php echo mobile_url('mobile/order', $this->session->userdata['wx']); ?>"><img src="<?php echo base_url(); ?>foundation/images/pbm_back.png"></a></h1>
+    </li>
+  </ul>
+  <section class="middle tab-bar-section">
+    <h1 class="title_con">订单详情</h1>
+  </section>
+</nav>
+<!-- top nav end-->
+<!--Container_con Begin-->
+<div class="container_con" style="margin-bottom:100px;">
+  <?php if($this->session->flashdata('result_code')){ ?>
+  <div data-alert class="alert-box">
+    <?php echo $this->session->flashdata('result_msg'); ?>
+    <a href="#" class="close">&times;</a>
+  </div>
+  <?php } ?>
+  <!--订单详情main Begin-->
+  <div class="order_main row">
+    <div class="row marginTop">
+      <h4 class="pbm_bdbtm">订单信息</h4>
+      <div class="small-12 marginTop row">
+        <div class="small-12 columns">订单编号：<span><?php echo $info['num']; ?></span></div>
+      </div>
+      <div class="small-12 marginTop row">
+        <div class="small-12 columns">上门时间：<?php echo $info['date'].' '.$info['time']; ?></div>
+      </div>
+      <div class="small-12 marginTop row">
+        <div class="small-6 columns">状态：<?php echo $info['status_string']; ?></div>
+      </div>
+      <div class="small-12 marginTop row">
+        <div class="small-12 columns">备注：<?php echo $info['note']; ?></div>
+      </div>
+    </div>
+
+    <div class="row marginTop">
+      <h4 class="pbm_bdbtm"><?php if($this->session->userdata['wx'] == 1){ echo '我的信息'; }else{ echo '客户信息'; } ?></h4>
+      <div class="small-12 marginTop row">
+        <div class="small-6 columns pbm_ordtit"><?php echo $info['name']; ?></div>
+        <div class="small-6 columns pbm_ordcon" ><?php echo $info['mobile']; ?></div>
+      </div>
+      <div class="small-12 marginTop row">
+        <div class="small-12 columns pbm_ordcon"><?php echo $info['address']; ?></div>
+      </div>
+    </div>
+
+    <?php if($this->session->userdata['wx'] == 1){ ?>
+    <div class="row marginTop">
+      <h4 class="pbm_bdbtm">服务人员信息</h4>
+      <div class="small-12 marginTop row">
+        <div class="small-6 columns pbm_ordtit"><?php echo $info['nurse']['name']; ?></div>
+        <div class="small-6 columns pbm_ordcon"><?php echo $info['nurse']['mobile']; ?></div>
+      </div>
+      <div class="small-12 marginTop row">
+        <div class="small-12 columns pbm_ordcon"><?php echo $info['nurse']['address']; ?></div>
+      </div>
+    </div>
+    <?php } ?>
+
+  </div>
+  <!--订单详情main Begin-->
+  <div class="small-12 columns" style="margin-bottom:200px">
+    <?php if(in_array($info['status'], array(1,2)) && ($this->session->userdata['wx'] == 1)){ ?>
+    <a href="<?php echo mobile_url('mobile/order/cancel/'.$info['id'], 1); ?>" class="button small expand alert">取消订单</a>
+
+
+    <?php }elseif(in_array($info['status'], array(5))){ ?>
+    <a href="<?php echo mobile_url('mobile/order/comment/'.$info['id'], $this->session->userdata['wx']); ?>" class="button small expand" style="margin-bottom:80px;">评价</a>
+    <?php } ?>
+
+    <?php if($this->session->userdata['wx'] == 2){ ?>
+    <?php if($info['status'] == 2){ ?>
+    <a href="<?php echo mobile_url('mobile/order/set_status/'.$info['id'].'/3', 2); ?>" class="button small expand">修改服务状态为已出发</a>
+    <?php } ?>
+
+    <?php if($info['status'] == 3){ ?>
+    <a href="<?php echo mobile_url('mobile/order/set_status/'.$info['id'].'/4', 2); ?>" class="button small expand">修改服务状态为服务中</a>
+    <?php } ?>
+
+    <?php if($info['status'] == 4){ ?>
+    <a href="<?php echo mobile_url('mobile/order/entry/'.$info['id'], 2); ?>" class="button small expand">数据录入</a>
+    <?php } ?>
+
+    <?php if(substr($info['num'], -1, 1) == 1){ ?>
+    <a href="http://www.mikecrm.com/f.php?t=8f0OZr" class="button small expand">一次问卷（健康）</a>
+    <a href="http://www.mikecrm.com/f.php?t=DwgVpU" class="button small expand">一次问卷（需求+评估）</a>
+    <?php }elseif(substr($info['num'], -1, 1) == 2){ ?>
+    <a href="http://www.mikecrm.com/f.php?t=zyvhJZ" class="button small expand">二次问卷（健康）</a>
+    <a href="http://www.mikecrm.com/f.php?t=7Tsrsp" class="button small expand">二次问卷（需求）</a>
+    <?php } ?>
+
+    <?php } ?>
+  </div>
+</div>
+<!--Container_con End-->
+<?php $this->load->view('mobile/public/footer.html'); ?>

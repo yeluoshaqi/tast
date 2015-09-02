@@ -1,0 +1,60 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<?php $this->load->view('admin/public/top.html'); ?>
+<div class="row">
+  <div class="medium-2 columns">
+    <?php $this->load->view('admin/public/side.html'); ?>
+  </div>
+  <div class="medium-10 columns">
+    <h1>编辑文本回复</h1>
+
+    <?php if(isset($result_code)){ ?>
+    <div data-alert class="alert-box <?php if(!$result_code) echo 'alert'; ?>">
+      <?php echo $result_msg; ?>
+      <a href="#" class="close">&times;</a>
+    </div>
+    <?php } ?>
+
+    <?php echo $breadcrumbs; ?>
+
+    <form method="POST" action="<?php echo site_url(); ?>/admin/host/textupdate">
+      <input type="hidden" name="id" value="<?php echo $info['id']; ?>">
+      <input type="hidden" name="type" value="文本回复">
+      <div class="row">
+        <div class="large-12 columns <?php if(form_error('keyword')) echo 'error'; ?>">
+          <label>关键字段
+            <input type="text" name="keyword" value="<?php echo $info['keyword']; ?>">
+          </label>
+          <?php echo form_error('keyword'); ?>
+        </div>
+        <div class="large-12 columns columns <?php if(form_error('wx_id')) echo 'error'; ?>">
+          <label>微信账号<br />
+            <!--<input type="number" name="wx_id" value="<?php echo $info['wx_id']; ?>">-->
+            <input type="radio" name="wx_id" value="1" <?php if($info['wx_id'] == 1) echo 'checked'; ?>><label>用户端微信</label>
+            <input type="radio" name="wx_id" value="2" <?php if($info['wx_id'] == 2) echo 'checked'; ?>><label>众包端微信</label>
+          </label>
+          <?php echo form_error('wx_id'); ?>
+        </div>
+        <div class="large-12 columns columns columns <?php if(form_error('content')) echo 'error'; ?>">
+          <label>回复内容
+            <input type="text" name="content" value="<?php echo $info['content']; ?>">
+          </label>
+          <?php echo form_error('content'); ?>
+        </div>
+        <div class="large-12 columns">
+          <input class="button tiny" type="submit" value="更新">
+          <a class="button tiny alert" href="#" data-reveal-id="delete_check">删除</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="delete_check" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">请注意!</h2>
+  <p class="lead">如果您点击删除按钮，本套餐信息将无法找回！！</p>
+  <a class="button tiny alert" href="<?php echo site_url().'/admin/host/textdelete/'.$info['id']; ?>">
+    删除
+  </a>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+<?php $this->load->view('admin/public/footer.html'); ?>

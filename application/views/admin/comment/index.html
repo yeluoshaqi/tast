@@ -1,0 +1,48 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<?php $this->load->view('admin/public/top.html'); ?>
+<div class="row">
+  <div class="medium-2 columns">
+    <?php $this->load->view('admin/public/side.html'); ?>
+  </div>
+  <div class="medium-10 columns">
+
+    <h1>Comment List</h1>
+
+    <?php if($this->session->flashdata('result_code')){ ?>
+    <div data-alert class="alert-box">
+      <?php echo $this->session->flashdata('result_msg'); ?>
+      <a href="#" class="close">&times;</a>
+    </div>
+    <?php } ?>
+
+    <?php echo $breadcrumbs; ?>
+    <table>
+      <thead>
+        <tr>
+          <th>订单编号</th>
+          <th>type</th>
+          <th>score</th>
+          <th>item</th>
+          <th>content</th>
+          <th>创建时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if($list){ ?>
+        <?php foreach($list as $row){ ?>
+        <tr>
+          <td><a href="<?php echo site_url().'/admin/comment/view/'.$row['id']; ?>"><?php echo $row['order_num']; ?></a></td>
+          <td><?php echo $row['type_name']; ?></td>
+          <td><?php echo $row['score_icon']; ?></td>
+          <td><?php echo $row['item_string']; ?></td>
+          <td><?php echo $row['content']; ?></td>
+          <td><?php echo $row['create_date']; ?></td>
+        </tr>
+        <?php } ?>
+        <?php }else{ ?>
+        <?php } ?>
+      </tbody>
+    </table>
+  </div>
+</div>
+<?php $this->load->view('admin/public/footer.html'); ?>

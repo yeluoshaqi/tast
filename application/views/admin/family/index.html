@@ -1,0 +1,53 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<?php $this->load->view('admin/public/top.html'); ?>
+<div class="row">
+  <div class="medium-2 columns">
+    <?php $this->load->view('admin/public/side.html'); ?>
+  </div>
+  <div class="medium-10 columns">
+
+    <h1>家人列表</h1>
+
+    <?php if($this->session->flashdata('result_code')){ ?>
+    <div data-alert class="alert-box">
+      <?php echo $this->session->flashdata('result_msg'); ?>
+      <a href="#" class="close">&times;</a>
+    </div>
+    <?php } ?>
+
+    <?php echo $breadcrumbs; ?>
+    <!-- <div id="list-action-bar"> -->
+    <!--   <a class="button tiny right" href="<?php echo site_url(); ?>/admin/service/create">添加</a> -->
+    <!-- </div> -->
+    <table>
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>关系</th>
+          <th>电话</th>
+          <th>地址</th>
+          <th>性别</th>
+          <th>创建时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if($list){ ?>
+        <?php foreach($list as $row){ ?>
+        <tr>
+          <td><a href="<?php echo site_url().'/admin/family/view/'.$row['id']; ?>"><?php echo $row['name']; ?></a></td>
+          <td><?php echo $row['title']; ?></td>
+          <td><?php echo $row['mobile']; ?></td>
+          <td><?php echo $row['address']; ?></td>
+          <td><?php echo $row['sex_name']; ?></td>
+          <td><?php echo $row['create_date']; ?></td>
+        </tr>
+        <?php } ?>
+        <?php }else{ ?>
+        <?php } ?>
+      </tbody>
+    </table>
+
+    <?php echo $this->pagination->create_links(); ?>
+  </div>
+</div>
+<?php $this->load->view('admin/public/footer.html'); ?>

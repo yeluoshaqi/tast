@@ -1,0 +1,137 @@
+<?php $this->load->view('admin/public/header.html'); ?>
+<?php $this->load->view('admin/public/top.html'); ?>
+<div class="row">
+  <div class="medium-2 columns">
+    <?php $this->load->view('admin/public/side.html'); ?>
+  </div>
+  <div class="medium-10 columns">
+
+    <div class="row">
+      <div class="small-12 columns">
+        <h1>订单管理</h1>
+        <?php if($this->session->flashdata('result_code')){ ?>
+        <div data-alert class="alert-box">
+          <?php echo $this->session->flashdata('result_msg'); ?>
+          <a href="#" class="close">&times;</a>
+        </div>
+        <?php } ?>
+        <?php echo $breadcrumbs; ?>
+      </div>
+
+
+      <div class="small-12 columns">
+        <form id="action-bar" method="POST" action="#">
+          <div class="row">
+            <div class="small-6 medium-3 columns">
+              <div class="row collapse">
+                <div class="small-3 columns">
+                  <span class="prefix">类型</span>
+                </div>
+                <div class="small-9 columns">
+                  <select name="type" class="expand">
+                    <option value="0">--请选择订单来源类型--</option>
+                    <option value="1" <?php if($search['type'] == 1) echo 'selected'; ?>>微信下单</option>
+                    <option value="2" <?php if($search['type'] == 2) echo 'selected'; ?>>电话下单</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="small-6 medium-3 columns">
+              <div class="row collapse">
+                <div class="small-3 medium-3 columns">
+                  <span class="prefix">编号</span>
+                </div>
+                <div class="small-9 medium-9 columns">
+                  <input type="text" name="id" placeholder="请输入订单编号" value="<?php echo $search['id']; ?>">
+                </div>
+              </div>
+            </div>
+            <div class="small-6 medium-3 columns">
+              <div class="row collapse">
+                <div class="small-3 columns">
+                  <span class="prefix">支付</span>
+                </div>
+                <div class="small-9 columns">
+                  <select name="is_pay" class="expand">
+                    <option value="2" <?php if($search['is_pay'] == 2) echo 'selected'; ?>>已支付</option>
+                    <!-- <option value="0">--请选择是否支付--</option> -->
+                    <option value="1" <?php if($search['is_pay'] == 1) echo 'selected'; ?>>未支付</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="small-6 medium-3 columns">
+              <div class="row collapse">
+                <div class="small-3 columns">
+                  <span class="prefix">状态</span>
+                </div>
+                <div class="small-9 columns">
+                  <select name="status" class="expand">
+                    <option value="0">--请选择订单状态--</option>
+                    <?php foreach($status_list as $key=>$row){ ?>
+                    <option value="<?php echo $key; ?>" <?php if($search['status'] == $key) echo 'selected'; ?>><?php echo $row; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="small-6 medium-4 columns left">
+              <input type="submit" value="搜索" class="button tiny">
+              <button class="button tiny alert" onclick="return reset_form(this)">重置</button>
+              <a class="button tiny" href="<?php echo site_url(); ?>/admin/order/create">添加</a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+
+      <div class="small-12 columns">
+        <table>
+          <thead>
+            <tr>
+              <th><div class="select_check" onclick="all_check(this)"></div></th>
+              <th>订单编号</th>
+              <th>姓名</th>
+              <th>类型</th>
+              <th>是否付款</th>
+              <th>状态</th>
+              <th><a href="<?php echo $sort['create_date']['url']; ?>">创建时间<i class="<?php echo $sort['create_date']['icon']; ?>"></i></a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php if($list){ ?>
+            <?php foreach($list as $row){ ?>
+            <tr>
+              <td data-id="<?php echo $row['id']; ?>"><div class="select_check select_item" onclick="select_check(this)"></div></td>
+              <td><a href="<?php echo site_url().'/admin/order/view/'.$row['id']; ?>"><?php echo $row['id']; ?></a></td>
+              <td><?php echo $row['member_name']; ?></td>
+              <td><?php echo $row['type_name']; ?></td>
+              <td><?php echo $row['is_pay_string']; ?></td>
+              <td><?php echo $row['status_name']; ?></td>
+              <td><?php echo $row['create_date']; ?></td>
+            </tr>
+            <?php } ?>
+            <?php }else{ ?>
+            <?php } ?>
+          </tbody>
+        </table>
+      </div>
+
+
+      <div class="small-12 medium-6 columns">
+        <button id="more_action_button" href="#" data-dropdown="more_action" aria-controls="more_action" aria-expanded="false" class="button dropdown tiny" disabled>操作</button><br>
+        <ul id="more_action" data-dropdown-content class="f-dropdown" aria-hidden="true">
+          <li><a href="#">待定</a></li>
+        </ul>
+      </div>
+
+
+      <div class="small-12 medium-6 columns">
+        <?php echo $this->pagination->create_links(); ?>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<?php $this->load->view('admin/public/footer.html'); ?>

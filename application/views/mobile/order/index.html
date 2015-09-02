@@ -1,0 +1,75 @@
+<?php $this->load->view('mobile/public/header.html'); ?>
+<!--Container Begin-->
+<div class="container"><img src="<?php echo base_url(); ?>/foundation/images/pbm_index_bg2.jpg"></div>
+<!--顶部选项卡 Begin-->
+
+  <ul class="tabs expand row " data-tab  id="order_tabs" >
+    <li class="tab-title small-4 columns active"><a href="#panel1">服务中</a></li>
+    <li class="tab-title small-4 columns" ><a href="#panel2">待评价</a></li>
+    <li class="tab-title small-4 columns" style="border-right:none!important;"><a href="#panel3">已完成</a></li>
+  </ul>
+
+<!--顶部选项卡 End-->
+<!--<button class="button" onclick="javascript:window.location.reload()" style="top:50px; postion:absolute">安卓刷新测试 勿点</button>-->
+<div class="tabs-content" >
+  <div class="content active" id="panel1" style="margin-bottom:60px">
+    <div class="row">
+      <div class="small-12 columns">
+        <?php if($list){ ?>
+        <?php foreach($list as $row){ ?>
+        <?php if(in_array($row['status'], array(1,2,3,4))){ ?>
+        <a href="<?php echo mobile_url('mobile/order/info/'.$row['id'], $this->session->userdata['wx']); ?>">
+          <div class="panel ">
+            <span class="right pbm_fs12"><?php echo $row['status_string']; ?></span>
+            <h5>订单编号：<span><?php echo $row['num']; ?></span></h5>
+            <p class="pbm_fs12">上门时间：<span><?php echo $row['date'].' '.$row['time']; ?></span></p>
+          </div>
+        </a>
+        <?php } ?>
+        <?php } ?>
+        <?php } ?>
+      </div>
+    </div>
+  </div>
+  <div class="content" id="panel2" style="margin-bottom:60px">
+    <div class="row">
+      <div class="small-12 columns">
+        <?php if($list){ ?>
+        <?php foreach($list as $row){ ?>
+        <?php if(in_array($row['status'], array(5))){ ?>
+        <a href="<?php echo mobile_url('mobile/order/info/'.$row['id'], $this->session->userdata['wx']); ?>">
+          <div class="panel">
+            <h5>订单编号：<span><?php echo $row['num']; ?></span></h5>
+            <!-- <div class="small-3 columns pbm_pj">评价</div> -->
+            <p class="pbm_fs12">上门时间：<span><?php echo $row['date'].' '.$row['time']; ?></span></p>
+          </div>
+        </a>
+        <?php } ?>
+        <?php } ?>
+        <?php } ?>
+      </div>
+    </div>
+  </div>
+  <div class="content" id="panel3" style="margin-bottom:60px">
+    <div class="row">
+      <div class="small-12 columns">
+        <?php if($list){ ?>
+        <?php foreach($list as $row){ ?>
+        <?php if(in_array($row['status'], array(6))){ ?>
+        <a href="<?php echo mobile_url('mobile/order/info/'.$row['id'], $this->session->userdata['wx']); ?>">
+          <div class="panel">
+            <h5>订单编号：<span><?php echo $row['num']; ?></span></h5>
+            <p class="pbm_fs12">上门时间：<span><?php echo $row['date'].' '.$row['time']; ?></span></p>
+          </div>
+        </a>
+        <?php } ?>
+        <?php } ?>
+        <?php } ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Container End-->
+<?php $this->load->view('mobile/public/btn_bar.html'); ?>
+<?php $this->load->view('mobile/public/footer.html'); ?>

@@ -1,0 +1,161 @@
+<?php $this->load->view('mobile/public/header.html'); ?>
+
+<!-- top nav Begin-->
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a class="pbm_back" href="<?php echo mobile_url('mobile/family', 1); ?>"><img src="<?php echo base_url(); ?>foundation/images/pbm_back.png"></a></h1>
+    </li>
+  </ul>
+  <section class="middle tab-bar-section">
+    <h1 class="title_con">家人信息</h1>
+  </section>
+</nav>
+<!-- top nav end-->
+
+<div class="row">
+  <div class="small-12 columns">
+    <?php $this->load->view('mobile/public/alert.html'); ?>
+    <form method="POST" action="<?php echo mobile_url('mobile/family/update', 1); ?>" onsubmit="return family_valid()">
+      <input type="hidden" name="id" value="<?php echo $info['id']; ?>">
+      <div class="row">
+
+        <div class="small-12 pbm_family <?php if(form_error('title')) echo 'error'; ?>">
+          <div class="small-2 floatLeft">
+            <img src="<?php echo base_url(); ?>foundation/images/pbm_icon_family.png">
+          </div>
+          <div class="small-3 floatLeft">
+            <label >关系：</label>
+          </div>
+          <div class="small-7 floatLeft">
+            <select name="title" id="title">
+              <?php if($info['title'] && !in_array($info['title'], array('自己','父亲','母亲','爷爷','奶奶','姥姥','姥爷','其他'))){ ?>
+              <option value="<?php echo $info['title']; ?>" selected><?php echo $info['title']; ?></option>
+              <?php } ?>
+              <option value="自己" <?php if($info['title'] == '自己') echo 'selected'; ?>>自己</option>
+              <option value="父亲" <?php if($info['title'] == '父亲') echo 'selected'; ?>>父亲</option>
+              <option value="母亲" <?php if($info['title'] == '母亲') echo 'selected'; ?>>母亲</option>
+              <option value="爷爷" <?php if($info['title'] == '爷爷') echo 'selected'; ?>>爷爷</option>
+              <option value="奶奶" <?php if($info['title'] == '奶奶') echo 'selected'; ?>>奶奶</option>
+              <option value="姥姥" <?php if($info['title'] == '姥姥') echo 'selected'; ?>>姥姥</option>
+              <option value="姥爷" <?php if($info['title'] == '姥爷') echo 'selected'; ?>>姥爷</option>
+              <option value="其他" <?php if($info['title'] == '其他') echo 'selected'; ?>>其他</option>
+            </select>
+          </div>
+          <?php echo form_error('title'); ?>
+        </div>
+
+        <div class="small-12 pbm_family <?php if(form_error('name')) echo 'error'; ?>">
+          <div class="small-2 floatLeft" >
+            <img src="<?php echo base_url(); ?>foundation/images/pbm_icon_name.png">
+          </div>
+          <div class="small-3 floatLeft" >
+            <label >姓名：</label>
+          </div>
+          <div class="small-7 floatLeft" >
+            <input type="text" name="name" id="name" value="<?php echo $info['name']; ?>">
+          </div>
+          <?php echo form_error('name'); ?>
+        </div>
+
+
+        <div class="small-12 pbm_family <?php if(form_error('mobile')) echo 'error'; ?>" >
+          <div class="small-2 floatLeft">
+            <img src="<?php echo base_url(); ?>foundation/images/pbm_icon_mobile.png">
+          </div>
+          <div class="small-3 floatLeft">
+            <label >手机号：</label>
+          </div>
+          <div class="small-7 floatLeft">
+            <input type="number" name="mobile" id="mobile" value="<?php echo $info['mobile']; ?>">
+          </div>
+          <?php echo form_error('mobile'); ?>
+        </div>
+
+        <div class="small-12 pbm_family <?php if(form_error('birthday')) echo 'error'; ?>" >
+          <div class="small-2 floatLeft">
+            <img src="<?php echo base_url(); ?>foundation/images/pbm_icon_birthday.png">
+          </div>
+          <div class="small-3 floatLeft">
+            <label >生日：</label>
+          </div>
+          <div class="small-7 floatLeft">
+            <input type="date" name="birthday" value="1970-01-01" >
+          </div>
+          <?php echo form_error('birthday'); ?>
+        </div>
+
+        <div class="small-12 pbm_family">
+          <div class="small-2 floatLeft">
+            <img src="<?php echo base_url(); ?>foundation/images/pbm_icon_address.png">
+          </div>
+          <div class="small-3 floatLeft">
+            <label>城市街道：</label>
+          </div>
+          <div class="small-7 floatLeft">
+            <input type="city" name="city" id="city" value="<?php if($info['city_array']) echo $info['city_array'][0]['name'].','.$info['city_array'][1]['name'].','.$info['city_array'][2]['name']; ?>" placeholder="请选择所在街道">
+          </div>
+        </div>
+
+        <div class="small-12 pbm_family <?php if(form_error('address')) echo 'error'; ?>" >
+          <div class="small-2 floatLeft">
+            <img src="<?php echo base_url(); ?>foundation/images/pbm_icon_address.png">
+          </div>
+          <div class="small-3 floatLeft">
+            <label >详细地址：</label>
+          </div>
+          <div class="small-7 floatLeft">
+            <input type="text" name="address" id="address" value="<?php echo $info['address']; ?>"  placeholder="请输入详细地址">
+          </div>
+          <?php echo form_error('address'); ?>
+        </div>
+
+        <div class="small-12 columns" style="margin-top:20px; margin-bottom:60px">
+          <div class="small-6 columns ">
+            <input type="submit" class="button small expand" value="更新">
+          </div>
+          <div class="small-6 columns ">
+            <a class="button small alert expand" href="#" data-reveal-id="delete_check">删除</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div id="delete_check" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle" style="text-align:center">警告</h2>
+  <p class="lead">删除之后数据将无法恢复，请谨慎操作！<br/>是否删除成员信息？</p>
+  <div class="small-12 columns">
+    <a class="button tiny alert" href="<?php echo site_url().'/mobile/family/delete/'.$info['id']; ?>">删除</a>
+  </div>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
+<div id="add_title_model" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle" style="text-align:center">请输入自定义关系类型</h2>
+  <div class="small-12 columns">
+    <input type="text" id="add_input">
+    <a class="button small" href="#" onclick="add_title()">OK</a>
+  </div>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+<?php $this->load->view('mobile/public/footer.html'); ?>
+<script src="<?php echo base_url(); ?>foundation/js/city.js"></script>
+<script>
+  $(function(){
+    $("#title").change(function(){
+      if($("#title").val() == '其他'){
+        $("#add_title_model").foundation('reveal', 'open');
+      }
+    });
+  });
+function add_title(){
+  var other_value = $("#add_input").val();
+  if(other_value.length<2 || other_value.length>6){
+    alert('输入内容长度应在２到５个文字以内');
+  }else{
+    $("#add_title_model").foundation('reveal','close');
+    $("#title option:last").before("<option value='"+other_value+"' selected>"+other_value+"</option>");
+  }
+}
+</script>

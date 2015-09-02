@@ -1,0 +1,18 @@
+<ul class="side-nav">
+  <li <?php if($this->uri->segment(2) == '') echo 'class="active"'; ?>><a href="<?php echo site_url(); ?>/admin">首页</a></li>
+  <li <?php if($this->uri->segment(2) == 'nurse') echo 'class="active"'; ?>><a href="<?php echo site_url(); ?>/admin/nurse">众包管理</a></li>
+  <li <?php if($this->uri->segment(2) == 'member') echo 'class="active"'; ?>><a href="<?php echo site_url(); ?>/admin/member">用户管理</a></li>
+  <li <?php if($this->uri->segment(2) == 'register') echo 'class="active"'; ?>><a href="<?php echo site_url(); ?>/admin/register">注册管理</a></li>
+  <li <?php if($this->uri->segment(2) == 'message') echo 'class="active"'; ?>><a href="<?php echo site_url(); ?>/admin/message">留言管理</a></li>
+  <li <?php if($this->uri->segment(2) == 'service') echo 'class="active"'; ?>><a href="<?php echo site_url(); ?>/admin/service">套餐管理</a></li>
+  <li <?php if($this->uri->segment(2) == 'city') echo 'class="active"'; ?>><a href="<?php echo site_url(); ?>/admin/city">城市管理</a></li>
+  <li class="divider"></li>
+  <li <?php if($this->uri->segment(2) == 'order') echo 'class="active"'; ?>><a href="<?php echo site_url(); ?>/admin/order">订单管理</a></li>
+  <li <?php if($this->uri->segment(2) == 'order_item') echo 'class="active"'; ?>><a href="<?php echo site_url(); ?>/admin/order_item">服务记录</a></li>
+  <li <?php if($this->uri->segment(2) == 'family') echo 'class="active"'; ?>><a href="<?php echo site_url(); ?>/admin/family">健康管理</a></li>
+  <!-- <li <?php if($this->uri->segment(2) == 'comment') echo 'class="active"'; ?>><a href="<?php echo site_url(); ?>/admin/comment">评价记录</a></li> -->
+  <li class="divider"></li>
+  <li <?php if($this->uri->segment(2) == 'wx') echo 'class="active"'; ?>><a href="<?php echo site_url(); ?>/admin/wx">微信管理</a></li>
+  <li <?php if($this->uri->segment(2) == 'menu') echo 'class="active"'; ?>><a href="<?php echo site_url(); ?>/admin/menu">菜单管理</a></li>
+  <li <?php if($this->uri->segment(2) == 'host') echo 'class="active"'; ?>><a href="<?php echo site_url(); ?>/admin/host">回复管理</a></li>
+</ul>
