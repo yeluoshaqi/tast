@@ -30,6 +30,7 @@ $route['mobile/success'] = 'mobile/index/success';
 
 $route['mobile/member'] = 'mobile/member/index';
 $route['mobile/member/base'] = 'mobile/member/base';
+$route['mobile/member/coupon'] = 'mobile/member/coupon';
 $route['mobile/member/date'] = 'mobile/member/date';
 $route['mobile/member/date/(:any)'] = 'mobile/member/date';
 $route['mobile/member/register'] = 'mobile/member/register';

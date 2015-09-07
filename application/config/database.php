@@ -50,7 +50,7 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = '123';
+$db['default']['password'] = 'liang';
 $db['default']['database'] = 'pbm';
 $db['default']['dbdriver'] = 'mysql';
 //$db['default']['port'] = 3306;

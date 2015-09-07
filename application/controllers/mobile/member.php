@@ -14,6 +14,11 @@ class Member extends MY_Controller
         $this->load->view('mobile/member/index.html', $data);
     }
 
+    public function coupon()
+    {
+        $this->load->view('mobile/member/coupon.html', $data);
+        
+    }
 
     public function base()
     {

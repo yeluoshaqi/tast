@@ -9501,3 +9501,58 @@ th.hide-for-touch {
   background-color: #43AC6A;
   color: #fff;
 }
+/*coupon_list*/
+
+ul,li{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.space_split {
+  height: 1rem;
+}
+ul li.coupon_list {
+  background: url("../images/coupon_bg.png")left center no-repeat;
+  background-size: 100% 100%;
+  color: #3b3b3b;
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 10px 0;
+  margin-bottom: 15px;
+  color: #515151;
+  
+}
+.coupon_block .money {
+  width: 28%;
+  text-align: center;
+  line-height: 4rem;
+  font-size: 1.8rem;
+}
+.coupon_block .money b {
+  font-weight: normal;
+}
+.coupon_block .title_f {
+  -webkit-box-flex: 3;
+  text-align: left;
+  padding-left: 1rem;
+}
+.coupon_block .title_f p {
+  padding: 0;
+  margin: 0;
+  font-size: 0.8rem;
+  color: #515151;
+}
+.coupon_block .title_f p:first-child {
+  font-size: 1rem;
+}
+.gray_color {
+  color: #959595;
+}
+.title_font {
+  color: #727272 !important;
+}
+
+.coupon_block {
+  display: -webkit-box;
+}

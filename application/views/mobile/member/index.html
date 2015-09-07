@@ -22,6 +22,11 @@
         <a class="small-8" href="<?php echo mobile_url('mobile/member/base', $this->session->userdata['wx']); ?>"><img src="<?php echo base_url(); ?>foundation/images/pbm_icon_name.png" style=" width:30px; margin-right:10px;margin-top:-5px">我的信息</a>
         <!--<a class="small-2" style="float:right;" href="<?php echo mobile_url('mobile/member/base', $this->session->userdata['wx']); ?>"><img src="<?php echo base_url(); ?>foundation/images/pbm_more.png"></a>-->
       </li>
+      <li class="pbm_info_li">
+        <a class="small-8" href="<?php echo mobile_url('mobile/member/coupon', $this->session->userdata['wx']); ?>"><img src="<?php echo base_url(); ?>foundation/images/coupon_icon.png" style=" width:30px; margin-right:10px;margin-top:-5px">我的优惠券</a>
+        <!--<a class="small-2" style="float:right;" href="<?php echo mobile_url('mobile/member/base', $this->session->userdata['wx']); ?>"><img src="<?php echo base_url(); ?>foundation/images/pbm_more.png"></a>-->
+      </li>
+
       <?php if($this->session->userdata['wx'] == 1){ ?>
       <li class="pbm_info_li"><a href="<?php echo mobile_url('mobile/family'); ?>"><img src="<?php echo base_url(); ?>foundation/images/pbm_icon_family.png" style=" width:30px; margin-right:10px;margin-top:-5px">家人信息</a></li>
       <?php }else{ ?>
