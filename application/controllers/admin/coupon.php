@@ -11,8 +11,16 @@ class Coupon extends MY_Controller
 
     public function index()
     {
-        $offset = 0;$len = 10;
-        $data['list'] = $this->Icouponl_model->gets($offset,$len);
+        $this->load->library('pagination');
+        $config['per_page'] = 5;
+        $config['base_url'] = site_url().'/admin/coupon/index';
+        $page = empty($this->uri->segment(4)) ? 1: $this->uri->segment(4);
+
+        $offset = ($page-1) * $config['per_page'];
+        $config['total_rows'] = $this->Icouponl_model->get_count();
+        $this->pagination->initialize($config);
+
+        $data['list'] = $this->Icouponl_model->gets($offset,$config['per_page']);
         $this->load->view('admin/coupon/index.html',$data);
     }
 
@@ -54,17 +62,43 @@ class Coupon extends MY_Controller
             $data['cid'] = $this->uri->segment(4);
             $this->load->view('admin/coupon/create_coupon.html',$data);
         }else{
+            $this->load->helper('string');
             $nub = $post_date['nub'];
             $cid = $post_date['cid'];
             $coupon = $this->Icouponl_model->get(array('id'=> $cid));
-            var_dump($coupon);
-            var_dump($nub,$cid);exit;
-            $i = 0;
+            $i = 1;
             while ( $i<= $nub) {
                 $i++;
-
+                $sncode = random_string('numeric',15);
+                $arr[] = array(
+                    'cid' => $cid,
+                    'sncode' => $sncode,
+                    'title'   => $coupon['title'],
+                    'fan_id'=> 0,
+                    'order_sn' => $order_sn,
+                    'coupon_price' => $coupon['coupon_price'],
+                    'used' => 0,
+                    'starttime'=> $coupon['starttime'],
+                    'endtime' => $coupon['endtime'],
+                    'lingqu_time' => 0,
+                    'create_time'=> time(),
+                    'updated_at'=> '0-0-0 0:0:0'
+                    ); 
             }
-            var_dump($nub);
+            $res = $this->Icoupons_model->sets($arr);
         }
+    }
+
+    public function show_coupon(){
+        $cid = $this->uri->segment(4);
+        $this->load->library('pagination');
+        $config['per_page'] = 5;
+        $config['base_url'] = site_url().'/admin/coupon/show_coupon/'.$cid;
+        $page = $this->uri->segment(5,1);
+        $offset = ($page-1) * $config['per_page'];
+        $config['total_rows'] = $this->Icoupons_model->get_count(array('cid'=>$cid));
+        $this->pagination->initialize($config);
+        $data['coupons'] = $this->Icoupons_model->gets(array('cid' => $cid),$offset,$config['per_page']);
+        $this->load->view('admin/coupon/show_coupon.html',$data);
     }
 }

@@ -5,11 +5,11 @@
     <?php $this->load->view('admin/public/side.html'); ?>
   </div>
   <div class="medium-10 columns">
-    <h1>创建优惠券</h1>
-    <?php echo $breadcrumbs; ?>
     <?php if(empty($id)): ?>
+    <h1>创建优惠券</h1>
     <form method="POST" action="<?php echo site_url(); ?>/admin/coupon/create_icoupons">
      <?php else: ?>
+    <h1>编辑优惠券</h1>
     <form method="POST" action="<?php echo site_url(); ?>/admin/coupon/update_icoupons">
      <input type = 'hidden' name = 'id' value="<?php echo $id?>">
      <?php endif; ?>
@@ -63,7 +63,7 @@
           <?php echo form_error('pay_channels'); ?>
         </div>
         <div class="large-12 columns">
-          <input class="button tiny" type="submit" value="添加">
+          <input class="button tiny" type="submit" value="确定">
         </div>
       </div>
     </form>
