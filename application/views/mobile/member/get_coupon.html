@@ -1,0 +1,25 @@
+
+<?php $this->load->view('mobile/public/header.html'); ?>
+<div class="row container_con" style="background:#fff;position:relative">
+	<div class="small-12">
+		<div class="hongbao_con">
+			
+			<img src="<?php echo base_url(); ?>foundation/images/hongbao_bg.jpg" class="hongbao_bg">
+			<div class="hongbao_div">
+				<img src="<?php echo base_url(); ?>foundation/images/hongbao_1.png">
+				<div class="money_block">
+					20元
+					<!-- <img src="<?php echo base_url(); ?>foundation/images/hongbao_2.png"> -->
+				</div>
+				<img src="<?php echo base_url(); ?>foundation/images/hongbao_3.png">
+			</div>
+		</div>
+		
+	</div>
+</div>
+<?php $this->load->view('mobile/public/footer.html'); ?>
+<script type="text/javascript">
+	
+	$(".hongbao_bg").height($(window).height())
+	$(".hongbao_bg").width($(window).height())
+</script>

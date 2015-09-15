@@ -16,6 +16,15 @@ class Member extends MY_Controller
 
     public function coupon()
     {
+        $this->load->model('Icouponl_model');
+        $this->load->model('Icoupons_model');
+        $coupons = $this->Icoupons_model->gets(array('fan_id' => $this->member_id));
+        foreach ($coupons as $key => $value) {
+            $icouponl = $this->Icouponl_model->get(array('id' => $value['cid']));
+            $coupons[$key]['least_price'] = $icouponl['least_price'];
+        }
+        $data['coupons'] = $coupons;
+        // var_dump($coupons[0]);exit;
         $this->load->view('mobile/member/coupon.html', $data);
         
     }
@@ -101,6 +110,33 @@ class Member extends MY_Controller
         $data['year'] = $year;
         $data['month'] = $month;
         $this->load->view('mobile/member/date.html', $data);
+    }
+
+    public function get_coupon(){
+        require BASEPATH.'../application/libraries/wxshare.php';
+        $this->load->model('Icoupons_model');
+        $this->load->model('Icouponl_model');
+        $this->load->helper('string');
+        $cid = '1';
+        $coupon = $this->Icouponl_model->get(array('id'=> $cid));
+        $sncode = random_string('numeric',15);
+        $arr[] = array(
+            'cid' => $cid,
+            'sncode' => $sncode,
+            'title'   => $coupon['title'],
+            'fan_id'=> $this->member_id,
+            'order_sn' => '',
+            'coupon_price' => $coupon['coupon_price'],
+            'used' => 0,
+            'starttime'=> $coupon['starttime'],
+            'endtime' => $coupon['endtime'],
+            'lingqu_time' => time(),
+            'create_time'=> time(),
+            'updated_at'=> '0-0-0 0:0:0'
+            ); 
+        $res = $this->Icoupons_model->sets($arr);
+        $data['coupon_price'] = $coupon_price;
+        $this->load->view('mobile/member/get_coupon.html', $data);
     }
 
 }

@@ -9518,7 +9518,7 @@ ul li.coupon_list {
   position: relative;
   max-width: 640px;
   margin: 0 auto;
-  padding: 10px 0;
+  padding: 1rem 0;
   margin-bottom: 15px;
   color: #515151;
   
@@ -9555,4 +9555,34 @@ ul li.coupon_list {
 
 .coupon_block {
   display: -webkit-box;
+}
+.coupon_icon {
+  height: 3rem;
+  position: absolute;
+  top: 0.3rem;
+  right: 0.5rem;
+}
+/*红包*/
+.hongbao_con {
+  position: relative;
+  margin: 0 auto;
+  
+
+}
+
+.hongbao_div {
+  margin: 0 2rem;
+  position: absolute;
+  top: 2.2rem;
+}
+.money_block {
+  background: url("../images/hongbao_2.png")left center no-repeat;
+  background-size: 100% 100%;
+  /*width: 633px;*/
+  height: 100%;
+  padding: 0px 0 20px 0;
+  text-align: center;
+  color: #e6937c;
+  font-size: 5em;
+  font-family: Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
 }

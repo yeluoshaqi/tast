@@ -228,8 +228,27 @@ class Api extends CI_Controller
             }
             else{
                 $this->load->model('Order_model');
+                
                 $out_trade_no = substr($notify->data['out_trade_no'], 10);
                 $this->Order_model->set_pay_status($out_trade_no, $notify->data['transaction_id']);
+                //核销优惠券
+                $order = $this->Order_model->get_one($out_trade_no);
+                if(!empty($order['coupon_id'])){
+                    $this->load->model('Icoupons_model');
+                    $this->Icoupons_model->update(
+                        array(
+                            'id' => $order['coupon_id']
+                        ),
+                        array(
+                            'fan_id' => $order['member_id'],
+                            'use' => 1,
+                            'usetime' => date('Y-m-d H:i:s'),
+                            'order_id' => $out_trade_no,
+                            'update_at' => date('Y-m-d H:i:s'),
+                        )
+                    );    
+                }
+                
                 $log_->log_result($log_name,"【支付成功】:\n".$xml."\n");
             }
         }

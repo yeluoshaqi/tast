@@ -13,7 +13,7 @@
           </div>
         </div>
          <div class="small-12 columns">
-              <form id="action-bar" method="POST" action="#">
+             <!--  <form id="action-bar" method="POST" action="#">
                 <input type="hidden" name="wx_id" value="1">
                 <div class="row">
                   <div class="small-6 medium-4 columns">
@@ -23,7 +23,6 @@
                       </div>
                     </div>
                   </div>
-                 <!--  <span>或</span> -->
                    <div class="small-6 medium-4 columns">
                     <div class="row collapse">
                       <div class="small-9 medium-9 columns">
@@ -35,10 +34,11 @@
                     <input type="submit" value="搜索" class="button tiny">
                   </div>
                 </div>
-              </form>
+              </form> -->
                 <div class="row">
                   <div class="small-6 medium-4 columns left">
                     <a   value="新建" class="button tiny" href = "<?php echo site_url().'/admin/coupon/create_icoupons/'.$row['id']; ?>">新建</a>
+                     <a   value="新建" class="button tiny" href = "<?php echo site_url().'/admin/coupon/bind_coupons'; ?>">绑定</a>
                   </div>
                 </div>
         </div>

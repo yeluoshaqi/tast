@@ -1,0 +1,11 @@
+/**
+ * order表添加字段 coupon_price couupon_id
+ */
+
+ /**
+ * 添加优惠券表  优惠券组 icoupon_list
+ */
+
+ /**
+ * 添加优惠券表  优惠券 icoupon_sncode
+ */

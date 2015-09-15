@@ -88,6 +88,19 @@
         </div>
       </div>
     </div>
+    <!-- 选择优惠券 -->
+    <?php if(!empty($coupons)): ?>
+    <div class="small-12 columns marginTop10">
+      <div class="pbm_bdbtm"><label>选择优惠券</label></div>
+      <div class="small-6 columns marginTop10">
+        <select id="coupon_id">
+        <?php foreach ($coupons as $key => $value) { ?>
+          <option value="<?php echo $value['id'] ?>">使用优惠券<?php echo $value['coupon_price'] ?>元</option>
+        <?php } ?>
+        </select>
+      </div>
+    </div>
+  <?php endif;?>
     <!--家人模块 End-->
     <!--选择时间-->
     <div class="small-12 columns marginTop10">
@@ -140,6 +153,7 @@
       <form method="POST" action="<?php echo site_url(); ?>/mobile/pay" onsubmit="return send()">
         <input type="hidden" name="service_id" value="1">
         <input type="hidden" name="family_id" value="" id="form_family">
+        <input type="hidden" name="coupon_id" value="" id="form_coupon">
         <input type="hidden" name="date" id="form_date">
         <input type="hidden" name="time" id="form_time">
         <input type="hidden" name="note" value="" id="form_note">
@@ -176,6 +190,9 @@ function send(){
     return false;
   }
   $("#form_family").val(family_id);
+
+  var coupon_id = $("#coupon_id").val();
+  $("#form_coupon").val(coupon_id);
 
   var date = $("#form_date_ori").val();
   if(date == ''){

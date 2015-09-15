@@ -14,25 +14,29 @@ class Index extends MY_Controller
     }
 
     public function service()
-    {
+    {   $this->load->model('Icoupons_model');
         $data['service'] = $this->Service_model->get_list(2);
         $data['family'] = $this->Parent_model->get_list_by_member($this->member_id);
+        $data['coupons'] = $this->Icoupons_model->gets(array('fan_id'=> $this->member_id));
         $this->load->view('mobile/index/service.html', $data);
     }
 
     public function pay()
     {
-        $this->load->model(array('Service_model','Parent_model','Order_item_model'));
+        $this->load->model(array('Service_model','Parent_model','Order_item_model','Icoupons_model'));
         if($this->input->post()){
             $post = $this->input->post();
             $service = $this->Service_model->get_one($post['service_id']);
             $family = $this->Parent_model->get_one($post['family_id']);
+            $coupon = $this->Icoupons_model->get(array('fan_id'=> $this->member_id,'id'=>$post['coupon_id']));
             $order_insert = array(
                 'member_id' => $this->member_id,
                 'service_id' => $post['service_id'],
                 'type' => 1,
-                'fee' => $service['price'],
+                'fee' => $service['price']-$coupon,
                 'status' => 1,
+                'coupon_id' => $post['coupon_id'],
+                'coupon_price' => $coupon['coupon_price'],
                 'order_num' => date("Ymd").rand(1000,9999).'w',
             );
 

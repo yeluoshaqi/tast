@@ -29,6 +29,7 @@ $route['mobile/success'] = 'mobile/index/success';
 //$route['mobile/delete/(:any)'] = 'mobile/index/delete';
 
 $route['mobile/member'] = 'mobile/member/index';
+$route['mobile/member/get_coupon'] = 'mobile/member/get_coupon';
 $route['mobile/member/base'] = 'mobile/member/base';
 $route['mobile/member/coupon'] = 'mobile/member/coupon';
 $route['mobile/member/date'] = 'mobile/member/date';
@@ -141,6 +142,7 @@ $route['admin/city/(:any)'] = 'admin/city/index';
 /** coupon **/
 $route['admin/coupon'] = 'admin/coupon/index';
 $route['admin/coupon/index/(:any)'] = 'admin/coupon/index';
+$route['admin/coupon/bind_coupons'] = 'admin/coupon/bind_coupons';
 $route['admin/coupon/create_icoupons'] = 'admin/coupon/create_icoupons';
 $route['admin/coupon/update_icoupons'] = 'admin/coupon/update_icoupons';
 $route['admin/coupon/update_icoupons/(:any)'] = 'admin/coupon/update_icoupons';

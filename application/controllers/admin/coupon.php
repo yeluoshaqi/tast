@@ -55,6 +55,35 @@ class Coupon extends MY_Controller
         }
     }
 
+    public function bind_coupons(){
+        $post_date = $this->input->post();
+        if(empty($post_date)){
+            $this->load->view('admin/coupon/bind_coupon.html',$data);
+        }else{
+            $this->load->helper('string');
+            $cid = $post_date['coupon_cid'];
+            $fan_id = $post_date['fan_id'];
+            $coupon = $this->Icouponl_model->get(array('id'=> $cid));
+            $sncode = random_string('numeric',15);
+            $arr[] = array(
+                'cid' => $cid,
+                'sncode' => $sncode,
+                'title'   => $coupon['title'],
+                'fan_id'=> $fan_id,
+                'order_sn' => '0',
+                'coupon_price' => $coupon['coupon_price'],
+                'used' => 0,
+                'starttime'=> $coupon['starttime'],
+                'endtime' => $coupon['endtime'],
+                'lingqu_time' => time(),
+                'create_time'=> time(),
+                'updated_at'=> '0-0-0 0:0:0'
+                ); 
+            $res = $this->Icoupons_model->sets($arr); 
+            redirect('admin/coupon');
+        }
+    }
+
     public function create_coupon(){
         $post_date = $this->input->post();
         if(empty($post_date)){
