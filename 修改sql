@@ -2,6 +2,10 @@
  * order表添加字段 coupon_price couupon_id
  */
 
+ alter table add clom
+ ALTER TABLE table_name
+ADD column_name datatype
+
  /**
  * 添加优惠券表  优惠券组 icoupon_list
  */
